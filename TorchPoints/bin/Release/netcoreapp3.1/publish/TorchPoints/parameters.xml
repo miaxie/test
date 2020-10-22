@@ -1,0 +1,5 @@
+﻿<parameters>
+  <parameter name="IIS Web Application Name" value="torch.points" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^D:\\personal\\torch\\EcPoints\\SourceCode\\TorchPoints\\TorchPoints\\obj\\Release\\netcoreapp3\.1\\PubTmp\\Out\\$" />
+  </parameter>
+</parameters>

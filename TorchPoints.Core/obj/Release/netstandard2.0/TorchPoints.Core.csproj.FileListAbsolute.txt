@@ -1,0 +1,9 @@
+D:\personal\torch\EcPoints\SourceCode\TorchPoints\TorchPoints.Core\bin\Release\netstandard2.0\TorchPoints.Core.deps.json
+D:\personal\torch\EcPoints\SourceCode\TorchPoints\TorchPoints.Core\bin\Release\netstandard2.0\TorchPoints.Core.dll
+D:\personal\torch\EcPoints\SourceCode\TorchPoints\TorchPoints.Core\bin\Release\netstandard2.0\TorchPoints.Core.pdb
+D:\personal\torch\EcPoints\SourceCode\TorchPoints\TorchPoints.Core\obj\Release\netstandard2.0\TorchPoints.Core.csprojAssemblyReference.cache
+D:\personal\torch\EcPoints\SourceCode\TorchPoints\TorchPoints.Core\obj\Release\netstandard2.0\TorchPoints.Core.AssemblyInfoInputs.cache
+D:\personal\torch\EcPoints\SourceCode\TorchPoints\TorchPoints.Core\obj\Release\netstandard2.0\TorchPoints.Core.AssemblyInfo.cs
+D:\personal\torch\EcPoints\SourceCode\TorchPoints\TorchPoints.Core\obj\Release\netstandard2.0\TorchPoints.Core.csproj.CoreCompileInputs.cache
+D:\personal\torch\EcPoints\SourceCode\TorchPoints\TorchPoints.Core\obj\Release\netstandard2.0\TorchPoints.Core.dll
+D:\personal\torch\EcPoints\SourceCode\TorchPoints\TorchPoints.Core\obj\Release\netstandard2.0\TorchPoints.Core.pdb

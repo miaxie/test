@@ -1,0 +1,12 @@
+D:\personal\torch\EcPoints\SourceCode\TorchPoints\TorchPoints.Service\bin\Release\netstandard2.0\TorchPoints.Service.deps.json
+D:\personal\torch\EcPoints\SourceCode\TorchPoints\TorchPoints.Service\bin\Release\netstandard2.0\TorchPoints.Service.dll
+D:\personal\torch\EcPoints\SourceCode\TorchPoints\TorchPoints.Service\bin\Release\netstandard2.0\TorchPoints.Service.pdb
+D:\personal\torch\EcPoints\SourceCode\TorchPoints\TorchPoints.Service\bin\Release\netstandard2.0\TorchPoints.Core.dll
+D:\personal\torch\EcPoints\SourceCode\TorchPoints\TorchPoints.Service\bin\Release\netstandard2.0\TorchPoints.Core.pdb
+D:\personal\torch\EcPoints\SourceCode\TorchPoints\TorchPoints.Service\obj\Release\netstandard2.0\TorchPoints.Service.csprojAssemblyReference.cache
+D:\personal\torch\EcPoints\SourceCode\TorchPoints\TorchPoints.Service\obj\Release\netstandard2.0\TorchPoints.Service.AssemblyInfoInputs.cache
+D:\personal\torch\EcPoints\SourceCode\TorchPoints\TorchPoints.Service\obj\Release\netstandard2.0\TorchPoints.Service.AssemblyInfo.cs
+D:\personal\torch\EcPoints\SourceCode\TorchPoints\TorchPoints.Service\obj\Release\netstandard2.0\TorchPoints.Service.csproj.CoreCompileInputs.cache
+D:\personal\torch\EcPoints\SourceCode\TorchPoints\TorchPoints.Service\obj\Release\netstandard2.0\TorchPoints.Service.csproj.CopyComplete
+D:\personal\torch\EcPoints\SourceCode\TorchPoints\TorchPoints.Service\obj\Release\netstandard2.0\TorchPoints.Service.dll
+D:\personal\torch\EcPoints\SourceCode\TorchPoints\TorchPoints.Service\obj\Release\netstandard2.0\TorchPoints.Service.pdb
