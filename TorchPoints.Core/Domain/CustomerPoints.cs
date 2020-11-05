@@ -9,3 +9,4 @@ namespace TorchPoints.Core
         public int Amount { get; set; }
     }
 }
+ 
