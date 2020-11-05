@@ -84,7 +84,7 @@ ELSE
 go
 
 /* 
- * TABLE: CustomerPoints 
+ * TABLE: CustomerPoints 会员积分余额表
  */
 
 CREATE TABLE CustomerPoints(
@@ -104,7 +104,7 @@ ELSE
 go
 
 /* 
- * TABLE: EnumType 
+ * TABLE: EnumType 枚举
  */
 
 CREATE TABLE EnumType(
