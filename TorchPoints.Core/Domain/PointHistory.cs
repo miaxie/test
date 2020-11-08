@@ -28,7 +28,7 @@ namespace TorchPoints.Core.Domain
         /// <summary>
         /// 积分使用时间
         /// </summary>
-        public DateTime UsedDate { get; set; }
+        public DateTime? UsedDate { get; set; }
         /// <summary>
         /// 积分过期时间
         /// </summary>
