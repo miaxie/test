@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model PointHistoryListModel;
+<div class="text-center">
+    <table style="width:100%;border:1px">
+        <tr>
+            <td>id</td>
+            <td>积分获赠类型</td>
+            <td>积分数量</td>
+            <td>获赠时间</td>
+            <td>积分过期时间</td>
+            <td>积分状态</td>
+        </tr>
+        @foreach (var p in Model.Historys)
+        {
+    <tr>
+        <td>@p.Id</td>
+        <td>@p.TypeName.</td>
+        <td>@p.Amount</td>
+        <td>@p.GetTime</td>
+        <td>@p.ExpiredDate</td>
+        <td>@p.Status</td>
+        <td>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Points" asp-action="Index">编辑</a>
+        </td>
+    </tr>
+        }
+
+    </table>
+</div>

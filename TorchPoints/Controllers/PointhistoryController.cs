@@ -61,7 +61,7 @@ namespace TorchPoints.Controllers
             var pointHistory = new PointHistory()
             {
                 Amount = history.Amount,
-                TypeId = history.TypeId,
+                TypeId = (PointSourceType)history.TypeId,
                 CustomerId = history.CustomerId,
                 GetTime = history.GetTime,
                 StatusId = (int)PointStatus.NoUsed

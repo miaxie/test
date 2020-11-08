@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TorchPoints.Core.Domain.Enum;
 
 namespace TorchPoints.Core.Domain
 {
@@ -12,7 +13,7 @@ namespace TorchPoints.Core.Domain
         /// <summary>
         /// 积分类型id
         /// </summary>
-        public int TypeId { get; set; }
+        public PointSourceType TypeId { get; set; }
         /// <summary>
         /// 积分数量
         /// </summary>
@@ -36,6 +37,6 @@ namespace TorchPoints.Core.Domain
         /// <summary>
         /// 积分状态id
         /// </summary>
-        public int StatusId { get; set; }
+        public PointStatus StatusId { get; set; }
     }
 }

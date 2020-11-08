@@ -15,3 +15,4 @@ D:\Mia\EcPoints\test\TorchPoints.Core\obj\Debug\netstandard2.0\TorchPoints.Core.
 D:\Mia\EcPoints\test\TorchPoints.Core\obj\Debug\netstandard2.0\TorchPoints.Core.AssemblyInfo.cs
 D:\Mia\EcPoints\test\TorchPoints.Core\obj\Debug\netstandard2.0\TorchPoints.Core.dll
 D:\Mia\EcPoints\test\TorchPoints.Core\obj\Debug\netstandard2.0\TorchPoints.Core.pdb
+D:\Mia\EcPoints\test\TorchPoints.Core\obj\Debug\netstandard2.0\TorchPoints.Core.csprojAssemblyReference.cache
