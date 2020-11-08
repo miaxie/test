@@ -4,6 +4,43 @@
         <name>TorchPoints</name>
     </assembly>
     <members>
+        <member name="T:TorchPoints.Controllers.CustomerPointsController">
+            <summary>
+            积分余额
+            </summary>
+        </member>
+        <member name="M:TorchPoints.Controllers.CustomerPointsController.Get(System.Int32)">
+            <summary>
+            获取当前会员的积分余额
+            </summary>
+            <param name="customerid"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TorchPoints.Controllers.PointhistoryController">
+            <summary>
+            积分历史
+            </summary>
+        </member>
+        <member name="M:TorchPoints.Controllers.PointhistoryController.Get(System.Int32)">
+            <summary>
+            获取积分历史列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TorchPoints.Controllers.PointhistoryController.GetPointHistorybyId(System.Int32)">
+            <summary>
+            根据id获取积分历史明细
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TorchPoints.Controllers.PointhistoryController.Post(TorchPoints.Model.PointHistoryModel)">
+            <summary>
+            新增积分历史
+            </summary>
+            <param name="history"></param>
+            <returns></returns>
+        </member>
         <member name="T:TorchPoints.Controllers.WeatherForecastController">
             <summary>
             天气
@@ -14,6 +51,31 @@
             获取Json列表
             </summary>
             <returns></returns>
+        </member>
+        <member name="T:TorchPoints.Model.PointHistoryModel">
+            <summary>
+            积分历史输入model
+            </summary>
+        </member>
+        <member name="P:TorchPoints.Model.PointHistoryModel.TypeId">
+            <summary>
+            积分类型id
+            </summary>
+        </member>
+        <member name="P:TorchPoints.Model.PointHistoryModel.Amount">
+            <summary>
+            积分数量
+            </summary>
+        </member>
+        <member name="P:TorchPoints.Model.PointHistoryModel.CustomerId">
+            <summary>
+            会员id
+            </summary>
+        </member>
+        <member name="P:TorchPoints.Model.PointHistoryModel.GetTime">
+            <summary>
+            获赠时间
+            </summary>
         </member>
     </members>
 </doc>

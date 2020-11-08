@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using TorchPoints.Core;
+using TorchPoints.Core.Domain;
 
 namespace TorchPoints.Service
 {
@@ -11,6 +12,14 @@ namespace TorchPoints.Service
         void DeleteCustomerPoint(CustomerPoints customerPoints);
         void DeleteCustomerPointsByIds(int[] ids);
         CustomerPoints GetCustomerPointsbyId(int id);
-        IEnumerable<CustomerPoints> GetAllCustomerPoints();
+        IEnumerable<CustomerPoints> GetAllCustomerPoints(int customerId = 0);
+
+        #region 会员积分历史操作
+        PointHistory InsertPointHistory(PointHistory history);
+        void UpdatePointHistory(PointHistory history);
+        void DeletePointHistory(PointHistory history);
+        PointHistory GetPointHistorybyId(int id);
+        IEnumerable<PointHistory> GetAllPointHistory(int customerId = 0);
+        #endregion
     }
 }

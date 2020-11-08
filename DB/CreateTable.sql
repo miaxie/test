@@ -15,7 +15,7 @@ use ECPoints
  */
 
 /* 
- * TABLE: ConfirmHistory 
+ * TABLE: ConfirmHistory 积分确认历史表
  */
 
 CREATE TABLE ConfirmHistory(
@@ -41,7 +41,7 @@ ELSE
 go
 
 /* 
- * TABLE: ConsumeDetail 
+ * TABLE: ConsumeDetail 积分消费历史明细表
  */
 
 CREATE TABLE ConsumeDetail(
@@ -62,7 +62,7 @@ ELSE
 go
 
 /* 
- * TABLE: ConsumeHistory 
+ * TABLE: ConsumeHistory  积分消费历史表
  */
 
 CREATE TABLE ConsumeHistory(
@@ -103,40 +103,18 @@ ELSE
     PRINT '<<< FAILED CREATING TABLE CustomerPoints >>>'
 go
 
-/* 
- * TABLE: EnumType 枚举
- */
 
-CREATE TABLE EnumType(
-    Id              int             IDENTITY(1,1),
-    ParentId        varchar(50)     DEFAULT 0 NOT NULL,
-    TypeName        varchar(50)     NOT NULL,
-    SystemName      nvarchar(50)    NOT NULL,
-    AttrValue       varchar(50)     NOT NULL,
-    DisplayOrder    int             NOT NULL,
-    Active          bit             DEFAULT 1 NOT NULL,
-    CONSTRAINT EnumType_PK PRIMARY KEY CLUSTERED (Id)
-)
-go
-
-
-
-IF OBJECT_ID('EnumType') IS NOT NULL
-    PRINT '<<< CREATED TABLE EnumType >>>'
-ELSE
-    PRINT '<<< FAILED CREATING TABLE EnumType >>>'
-go
 
 /* 
- * TABLE: ExpiresPoint 
+ * TABLE: ExpiresPoint 过期积分表
  */
-
 CREATE TABLE ExpiresPoint(
 	Id            int         IDENTITY(1,1),
     PointHistoryId     int      NOT NULL,
     CustomerId    int         NOT NULL,
     Amount        int         DEFAULT 0 NOT NULL,
     [ExpireDate]    datetime    NOT NULL,
+	CreateDate datetime not null,
 	CONSTRAINT ExpiresPoint_PK PRIMARY KEY CLUSTERED (Id)
 )
 go
@@ -150,7 +128,7 @@ ELSE
 go
 
 /* 
- * TABLE: PointHistory 
+ * TABLE: PointHistory 积分历史表
  */
 
 CREATE TABLE PointHistory(

@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\personal\\torch\\EcPoints\\SourceCode\\TorchPoints\\TorchPoints.Core\\TorchPoints.Core.csproj": {}
+    "D:\\Mia\\EcPoints\\test\\TorchPoints.Core\\TorchPoints.Core.csproj": {}
   },
   "projects": {
-    "D:\\personal\\torch\\EcPoints\\SourceCode\\TorchPoints\\TorchPoints.Core\\TorchPoints.Core.csproj": {
+    "D:\\Mia\\EcPoints\\test\\TorchPoints.Core\\TorchPoints.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\personal\\torch\\EcPoints\\SourceCode\\TorchPoints\\TorchPoints.Core\\TorchPoints.Core.csproj",
+        "projectUniqueName": "D:\\Mia\\EcPoints\\test\\TorchPoints.Core\\TorchPoints.Core.csproj",
         "projectName": "TorchPoints.Core",
-        "projectPath": "D:\\personal\\torch\\EcPoints\\SourceCode\\TorchPoints\\TorchPoints.Core\\TorchPoints.Core.csproj",
-        "packagesPath": "C:\\Users\\mia_xie\\.nuget\\packages\\",
-        "outputPath": "D:\\personal\\torch\\EcPoints\\SourceCode\\TorchPoints\\TorchPoints.Core\\obj\\",
+        "projectPath": "D:\\Mia\\EcPoints\\test\\TorchPoints.Core\\TorchPoints.Core.csproj",
+        "packagesPath": "C:\\Users\\Mia\\.nuget\\packages\\",
+        "outputPath": "D:\\Mia\\EcPoints\\test\\TorchPoints.Core\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\mia_xie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Mia\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -83,7 +86,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
