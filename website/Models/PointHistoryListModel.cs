@@ -12,5 +12,6 @@ namespace website.Models
     public class PointHistoryListModel
     {
         public List<PointHistoryModel> Historys = new List<PointHistoryModel>();
+        public int TotalCount { get; set; }
     }
 }

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using TorchPoints.Core.Domain;
 
@@ -230,6 +231,40 @@ namespace TorchPoints.Core.DataAccess
             }
         }
 
+        /// <summary>
+        /// dapper通用分页方法
+        /// </summary>
+        /// <typeparam name="T">泛型集合实体类</typeparam>
+        /// <param name="conn">数据库连接池连接对象</param>
+        /// <param name="files">列</param>
+        /// <param name="tableName">表</param>
+        /// <param name="where">条件</param>
+        /// <param name="orderby">排序</param>
+        /// <param name="pageIndex">当前页</param>
+        /// <param name="pageSize">当前页显示条数</param>
+        /// <param name="total">结果集总数</param>
+        /// <returns></returns>
+        public IEnumerable<T> GetPageList<T>(string select, string from, string where, string orderby, int pageIndex, int pageSize, out int total)
+        {
+            int skip = 1;
+            if (pageIndex > 0)
+            {
+                skip = (pageIndex - 1) * pageSize;
+            }
+            using (IDbConnection conn = Connection)
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.AppendFormat("SELECT COUNT(1) {0} {1};", from, where);
+                StringBuilder sql = new StringBuilder();
+                sql.AppendFormat(@"  {0} {1} {2} {3}
+offset {4} rows fetch next {5} rows only", select, from, where, orderby, skip, pageSize);
+
+                total = conn.QueryFirstOrDefault<int>(sb.ToString());
+
+                return conn.Query<T>(sql.ToString());
+            }
+        
+        }
 
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using TorchPoints.Core;
 using TorchPoints.Core.Domain;
 using TorchPoints.Core.Domain.Enum;
 using TorchPoints.Model;
@@ -32,8 +33,23 @@ namespace TorchPoints.Controllers
         [HttpGet("{customerid}")]
         public IActionResult Get(int customerId)
         {
-            var points = _pointService.GetAllPointHistory(customerId);
-            return Ok(points);
+            var list = new List<dynamic>();
+            var totalCount = 0;
+            var historys = _pointService.GetAllPointHistory(out totalCount, pageIndex: 0, pageSize: 15);
+            foreach (var item in historys)
+            {
+                var point = new
+                {
+                    Amount = item.Amount,
+                    TypeName = CommonHelper.GetEnumDescription(item.TypeId),
+                    CustomerId = item.CustomerId,
+                    GetTime = item.GetTime,
+                    ExpiredDate = item.ExpiredDate,
+                    Status = CommonHelper.GetEnumDescription(item.StatusId)
+                };
+                list.Add(point);
+            }
+            return Ok(list);
         }
         /// <summary>
         /// 根据id获取积分历史明细

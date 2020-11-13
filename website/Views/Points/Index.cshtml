@@ -2,30 +2,117 @@
     ViewData["Title"] = "Home Page";
 }
 @model PointHistoryListModel;
-<div class="text-center">
-    <table style="width:100%;border:1px">
-        <tr>
-            <td>id</td>
-            <td>积分获赠类型</td>
-            <td>积分数量</td>
-            <td>获赠时间</td>
-            <td>积分过期时间</td>
-            <td>积分状态</td>
-        </tr>
-        @foreach (var p in Model.Historys)
-        {
-    <tr>
-        <td>@p.Id</td>
-        <td>@p.TypeName.</td>
-        <td>@p.Amount</td>
-        <td>@p.GetTime</td>
-        <td>@p.ExpiredDate</td>
-        <td>@p.Status</td>
-        <td>
-            <a class="nav-link text-dark" asp-area="" asp-controller="Points" asp-action="Index">编辑</a>
-        </td>
-    </tr>
-        }
+    <head>
+        <meta charset="utf-8">
+        <title>积分管理</title>
+        <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
+        <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+    </head>
+<body>
+    <form id="main" v-cloak>
+      
+        <div class="text-center" style="padding-top:30px">
+            <table style="width:100%;border:1px">
+                <tr>
+                    <td>id</td>
+                    <td>积分获赠类型</td>
+                    <td>积分数量</td>
+                    <td>获赠时间</td>
+                    <td>积分过期时间</td>
+                    <td>积分状态</td>
+                </tr>
 
-    </table>
-</div>
+                <tr v-for="p in historys">
+                    <td>{{p.id}}</td>
+                    <td>{{p.typeName}}</td>
+                    <td>{{p.amount}}</td>
+                    <td>{{p.getTime}}</td>
+                    <td>{{p.expiredDate}}</td>
+                    <td>{{p.status}}</td>
+                    <td>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Points" asp-action="Index">编辑</a>
+                    </td>
+                </tr>
+                <tr style="align-content:center">
+                    <td colspan="6">
+                        <ul class="pagination pagination-lg">
+                            <li><a href="#">&laquo;</a></li>
+                            @{
+                                var pages = Model.TotalCount / 15;
+                                for (int i = 0; i < pages; i++)
+                                {
+                                    <li><a href="#"> @(Convert.ToInt32(i)+1)</a></li>
+                                }
+                            }
+                            <li><a href="#">&raquo;</a></li>
+                        </ul>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+        <script>
+            new Vue({
+                el: '#main',
+                data: {
+                        historys: []
+                },
+                mounted() {
+                    axios
+                        .get('/Points/GetList?pageIndex=1&pageSize=20')
+                        .then(response => {
+                            console.log(response);
+                            this.historys = response.data;
+                        })
+                            //(this.info = response))
+                        .catch(function (error) { // 请求失败处理
+                            console.log(error);
+                        });
+                }
+            })
+        </script>
+
+
+        @*<script>
+            var demo = new Vue({
+                el: '#main',
+                data: {
+                    searchString: "",
+                    // 数据模型，实际环境你可以根据 Ajax 来获取
+                    articles: [
+                        {
+                            "TypeName": "tile1",
+                            "Id":1,
+                            "Amount": 0,
+                            "GetTime": "2020-11-13",
+                            "ExpiredDate":"2020-11-14"
+                        }, {
+                            "TypeName": "tile1",
+                            "Id": 1,
+                            "Amount": 0,
+                            "GetTime": "2020-11-13",
+                            "ExpiredDate": "2020-11-14"
+                        },
+                        {
+                            "TypeName": "tile1",
+                            "Id": 1,
+                            "Amount": 0,
+                            "GetTime": "2020-11-13",
+                            "ExpiredDate": "2020-11-14"
+                        }
+                    ]
+                },
+                computed: {
+                    filteredHistory: function () {
+                        var articles_array = this.articles;
+                        // 返回过来后的数组
+                        return articles_array;;
+                    }
+                }
+            });
+        </script>*@
+    </form>
+</body>

@@ -19,7 +19,7 @@ namespace TorchPoints.Service
         void UpdatePointHistory(PointHistory history);
         void DeletePointHistory(PointHistory history);
         PointHistory GetPointHistorybyId(int id);
-        IEnumerable<PointHistory> GetAllPointHistory(int customerId = 0);
+        IEnumerable<PointHistory> GetAllPointHistory(out int totalCount, int customerId = 0, int pageIndex = 0, int pageSize = int.MaxValue);
         #endregion
     }
 }

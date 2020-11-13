@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace TorchPoints.Core.Domain.Enum
@@ -9,15 +10,13 @@ namespace TorchPoints.Core.Domain.Enum
         /// <summary>
         /// 赠送
         /// </summary>
-        Gift=1,
-        /// <summary>
-        /// 任务所得
-        /// </summary>
-        Task=2,
+        [Description("赠送")]
+        Gift =1,
         /// <summary>
         /// 系统赠送
         /// </summary>
-        System=3
+        [Description("系统赠送")] 
+        System =2
 
     }
 }

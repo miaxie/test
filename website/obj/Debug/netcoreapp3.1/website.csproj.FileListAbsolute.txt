@@ -152,3 +152,4 @@ D:\Mia\EcPoints\test\website\bin\Debug\netcoreapp3.1\TorchPoints.xml
 D:\Mia\EcPoints\test\website\bin\Debug\netcoreapp3.1\TorchPoints.Core.pdb
 D:\Mia\EcPoints\test\website\bin\Debug\netcoreapp3.1\TorchPoints.Service.pdb
 D:\Mia\EcPoints\test\website\obj\Debug\netcoreapp3.1\website.MvcApplicationPartsAssemblyInfo.cs
+D:\Mia\EcPoints\test\website\obj\Debug\netcoreapp3.1\Razor\Views\Points\Create.cshtml.g.cs

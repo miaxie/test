@@ -120,15 +120,18 @@ namespace TorchPoints.Service
         {
             return _SqlDB.GetByID<PointHistory>(id);
         }
-        public virtual IEnumerable<PointHistory> GetAllPointHistory(int customerId = 0)
+        public virtual IEnumerable<PointHistory> GetAllPointHistory(out int totalCount, int customerId = 0,int pageIndex=0,int pageSize=int.MaxValue)
         {
-            var sql = new StringBuilder(@"select * from [PointHistory](nolock)");
-
+            var select = new StringBuilder(@"select * ");
+            var from = new StringBuilder(@" from [PointHistory](nolock)");
+            var where = new StringBuilder(" where 1=1 ");
             if (customerId > 0)
             {
-                sql = sql.AppendFormat(" where customerid={0}", customerId);
+                where = where.AppendFormat(" and customerid={0}", customerId);
             }
-            var result = _SqlDB.Query<PointHistory>(sql.ToString());
+            var orderby = " order by Id desc";
+            var result = _SqlDB.GetPageList<PointHistory>(select.ToString(),
+                from.ToString(),where.ToString(),orderby.ToString(),pageIndex,pageSize, out totalCount);
             return result;
         }
         #endregion
