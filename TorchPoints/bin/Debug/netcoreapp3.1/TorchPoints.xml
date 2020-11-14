@@ -4,6 +4,18 @@
         <name>TorchPoints</name>
     </assembly>
     <members>
+        <member name="T:TorchPoints.Controllers.ConsumeHistoryController">
+            <summary>
+            积分消费及消费历史查询
+            </summary>
+        </member>
+        <member name="M:TorchPoints.Controllers.ConsumeHistoryController.Post(TorchPoints.Model.ConsumeModel)">
+            <summary>
+            新增积分消费历史
+            </summary>
+            <param name="history"></param>
+            <returns></returns>
+        </member>
         <member name="T:TorchPoints.Controllers.CustomerPointsController">
             <summary>
             积分余额
@@ -21,7 +33,7 @@
             积分历史
             </summary>
         </member>
-        <member name="M:TorchPoints.Controllers.PointhistoryController.Get(System.Int32)">
+        <member name="M:TorchPoints.Controllers.PointhistoryController.Get(System.Int32,System.Int32,System.Int32)">
             <summary>
             获取积分历史列表
             </summary>
@@ -51,6 +63,111 @@
             获取Json列表
             </summary>
             <returns></returns>
+        </member>
+        <member name="T:TorchPoints.Model.ApiResponseModel`1">
+            <summary>
+            api返回模型
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:TorchPoints.Model.ApiResponseModel`1.Data">
+            <summary>
+            業務數據
+            </summary>
+        </member>
+        <member name="P:TorchPoints.Model.ApiResponseModel`1.Success">
+            <summary>
+            接口調用標識
+            </summary>
+        </member>
+        <member name="P:TorchPoints.Model.ApiResponseModel`1.TotalCount">
+            <summary>
+            列表查詢時返回總條數
+            </summary>
+        </member>
+        <member name="P:TorchPoints.Model.ApiResponseModel`1.Status">
+            <summary>
+            接口狀態，僅異常或處理失敗是賦值
+            </summary>
+        </member>
+        <member name="M:TorchPoints.Model.ApiResponseModel`1.#ctor(`0,TorchPoints.Model.StatusCode,System.String,System.Int32)">
+            <summary>
+            请求失败时使用
+            </summary>
+            <param name="data"></param>
+            <param name="statusCode"></param>
+            <param name="message"></param>
+            <param name="success">调用是否成功</param>
+        </member>
+        <member name="F:TorchPoints.Model.StatusCode.RuntimeError">
+            <summary>
+            運行期異常
+            </summary>
+        </member>
+        <member name="F:TorchPoints.Model.StatusCode.TimeoutError">
+            <summary>
+            連接超時
+            </summary>
+        </member>
+        <member name="F:TorchPoints.Model.StatusCode.UnsupportedMediaTypeError">
+            <summary>
+            未受支持的文檔類型
+            </summary>
+        </member>
+        <member name="F:TorchPoints.Model.StatusCode.NoPermissionAlert">
+            <summary>
+            操作未授權
+            </summary>
+        </member>
+        <member name="F:TorchPoints.Model.StatusCode.UnhandledAlert">
+            <summary>
+            未做任何處理
+            </summary>
+        </member>
+        <member name="F:TorchPoints.Model.StatusCode.PartialHandled">
+            <summary>
+            部分請求被處理
+            </summary>
+        </member>
+        <member name="F:TorchPoints.Model.StatusCode.HandledFaild">
+            <summary>
+            請求處理失敗
+            </summary>
+        </member>
+        <member name="F:TorchPoints.Model.StatusCode.NullParameterAlert">
+            <summary>
+            參數為空
+            </summary>
+        </member>
+        <member name="F:TorchPoints.Model.StatusCode.InvalidParameterAlert">
+            <summary>
+            參數無效
+            </summary>
+        </member>
+        <member name="T:TorchPoints.Model.ConsumeModel">
+            <summary>
+            积分历史输入model
+            </summary>
+        </member>
+        <member name="P:TorchPoints.Model.ConsumeModel.Amount">
+            <summary>
+            积分数量
+            </summary>
+        </member>
+        <member name="P:TorchPoints.Model.ConsumeModel.CustomerId">
+            <summary>
+            会员id
+            </summary>
+        </member>
+        <member name="P:TorchPoints.Model.ConsumeModel.ConsumeTypeId">
+            <summary>
+            消费类型
+            </summary>
+        </member>
+        <member name="P:TorchPoints.Model.ConsumeModel.Remark">
+            <summary>
+            备注
+            </summary>
         </member>
         <member name="T:TorchPoints.Model.PointHistoryModel">
             <summary>

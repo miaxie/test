@@ -21,10 +21,15 @@ namespace TorchPoints.Core.Domain.Enum
         [Description("已使用")]
         Used = 2,
         /// <summary>
+        /// 部分已使用
+        /// </summary>
+        [Description("部分已使用")]
+        PartialUsed = 3,
+        /// <summary>
         /// 过期
         /// </summary>
         [Description("过期")]
-        Expired = 3
+        Expired = 4
 
     }
 }

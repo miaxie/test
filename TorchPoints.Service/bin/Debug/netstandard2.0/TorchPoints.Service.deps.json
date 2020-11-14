@@ -55,6 +55,17 @@
           }
         }
       },
+      "DapperExtensions/1.6.3": {
+        "dependencies": {
+          "Dapper": "2.0.35"
+        },
+        "runtime": {
+          "lib/net45/DapperExtensions.dll": {
+            "assemblyVersion": "1.6.3.0",
+            "fileVersion": "1.6.3.0"
+          }
+        }
+      },
       "FluentMigrator.Abstractions/3.2.9": {
         "dependencies": {
           "System.ComponentModel.Annotations": "4.5.0",
@@ -1589,6 +1600,7 @@
         "dependencies": {
           "Dapper": "2.0.35",
           "Dapper.SimpleCRUD": "2.2.0.1",
+          "DapperExtensions": "1.6.3",
           "FluentMigrator.Runner.Core": "3.2.9",
           "MySql.Data": "8.0.21",
           "Oracle.ManagedDataAccess": "19.9.0",
@@ -1627,6 +1639,13 @@
       "sha512": "sha512-ovVT5IrWpB1kq24MFdM01xhfba+vCGyR1GTH0dX1VLoZtwyqmy4pwOJ1MADTqOQ3SFplTP9un14RtrkOH8uB9Q==",
       "path": "dapper.simplecrud/2.2.0.1",
       "hashPath": "dapper.simplecrud.2.2.0.1.nupkg.sha512"
+    },
+    "DapperExtensions/1.6.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-KrmiZVbSu8NcjcdteDfuLKEES8ZA/HOHyDO4n5Gvc2CuSxulaRaEPofr0zCH7LM/yevi2gSnA5GlOGYj8Ayd6w==",
+      "path": "dapperextensions/1.6.3",
+      "hashPath": "dapperextensions.1.6.3.nupkg.sha512"
     },
     "FluentMigrator.Abstractions/3.2.9": {
       "type": "package",

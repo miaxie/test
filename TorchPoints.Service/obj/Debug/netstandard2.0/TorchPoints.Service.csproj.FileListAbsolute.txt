@@ -22,3 +22,15 @@ D:\Mia\EcPoints\test\TorchPoints.Service\obj\Debug\netstandard2.0\TorchPoints.Se
 D:\Mia\EcPoints\test\TorchPoints.Service\obj\Debug\netstandard2.0\TorchPoints.Service.csproj.CopyComplete
 D:\Mia\EcPoints\test\TorchPoints.Service\obj\Debug\netstandard2.0\TorchPoints.Service.dll
 D:\Mia\EcPoints\test\TorchPoints.Service\obj\Debug\netstandard2.0\TorchPoints.Service.pdb
+D:\TorchPoints\test\TorchPoints.Service\obj\Debug\netstandard2.0\TorchPoints.Service.csprojAssemblyReference.cache
+D:\TorchPoints\test\TorchPoints.Service\obj\Debug\netstandard2.0\TorchPoints.Service.AssemblyInfoInputs.cache
+D:\TorchPoints\test\TorchPoints.Service\obj\Debug\netstandard2.0\TorchPoints.Service.AssemblyInfo.cs
+D:\TorchPoints\test\TorchPoints.Service\obj\Debug\netstandard2.0\TorchPoints.Service.csproj.CoreCompileInputs.cache
+D:\TorchPoints\test\TorchPoints.Service\obj\Debug\netstandard2.0\TorchPoints.Service.dll
+D:\TorchPoints\test\TorchPoints.Service\obj\Debug\netstandard2.0\TorchPoints.Service.pdb
+D:\TorchPoints\test\TorchPoints.Service\bin\Debug\netstandard2.0\TorchPoints.Service.deps.json
+D:\TorchPoints\test\TorchPoints.Service\bin\Debug\netstandard2.0\TorchPoints.Service.dll
+D:\TorchPoints\test\TorchPoints.Service\bin\Debug\netstandard2.0\TorchPoints.Service.pdb
+D:\TorchPoints\test\TorchPoints.Service\bin\Debug\netstandard2.0\TorchPoints.Core.dll
+D:\TorchPoints\test\TorchPoints.Service\bin\Debug\netstandard2.0\TorchPoints.Core.pdb
+D:\TorchPoints\test\TorchPoints.Service\obj\Debug\netstandard2.0\TorchPoints.Service.csproj.CopyComplete

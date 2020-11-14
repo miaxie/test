@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using TorchPoints.Core;
+using TorchPoints.Core.DataAccess;
 using TorchPoints.Core.Domain;
 
 namespace TorchPoints.Service
@@ -12,6 +13,7 @@ namespace TorchPoints.Service
         void DeleteCustomerPoint(CustomerPoints customerPoints);
         void DeleteCustomerPointsByIds(int[] ids);
         CustomerPoints GetCustomerPointsbyId(int id);
+        CustomerPoints GetCustomerPointsbyCustomerId(int customerId);
         IEnumerable<CustomerPoints> GetAllCustomerPoints(int customerId = 0);
 
         #region 会员积分历史操作
@@ -19,7 +21,18 @@ namespace TorchPoints.Service
         void UpdatePointHistory(PointHistory history);
         void DeletePointHistory(PointHistory history);
         PointHistory GetPointHistorybyId(int id);
-        IEnumerable<PointHistory> GetAllPointHistory(out int totalCount, int customerId = 0, int pageIndex = 0, int pageSize = int.MaxValue);
+        IPagedList<PointHistory> GetAllPointHistory(int customerId = 0, int pageIndex = 0, int pageSize = int.MaxValue);
+
+        /// <summary>
+        /// 获取有效积分记录
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
+        IPagedList<PointHistory> GetUnUsedPointHistory(int customerId = 0,
+            int pageIndex = 0,
+            int pageSize = int.MaxValue);
         #endregion
     }
 }

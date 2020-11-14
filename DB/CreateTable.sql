@@ -71,6 +71,7 @@ CREATE TABLE ConsumeHistory(
     TotalAmount      int         DEFAULT 0 NOT NULL,
     ConsumDate       datetime    NOT NULL,
     ConsumeTypeId    int         DEFAULT 0 NOT NULL,
+	Remark           Nvarchar(500) null,
     CONSTRAINT ConsumeHistory_PK PRIMARY KEY CLUSTERED (Id)
 )
 go
@@ -91,6 +92,7 @@ CREATE TABLE CustomerPoints(
     Id            int    IDENTITY(1,1),
     CustomerId    int    NOT NULL,
     Amount        int    DEFAULT 0 NOT NULL,
+	UpdateDate    datetime not null,
     CONSTRAINT CustomerPoints_PK PRIMARY KEY CLUSTERED (Id)
 )
 go
@@ -115,6 +117,7 @@ CREATE TABLE ExpiresPoint(
     Amount        int         DEFAULT 0 NOT NULL,
     [ExpireDate]    datetime    NOT NULL,
 	CreateDate datetime not null,
+	RemainAmount  int         DEFAULT 0 NOT NULL,
 	CONSTRAINT ExpiresPoint_PK PRIMARY KEY CLUSTERED (Id)
 )
 go
@@ -220,4 +223,6 @@ ALTER TABLE ExpiresPoint ADD CONSTRAINT RefPointHistory141
     REFERENCES PointHistory(Id)
 go
 
-
+--Çå¿ÕÊý¾Ý
+DELETE [PointHistory]; 
+DBCC CHECKIDENT('PointHistory', RESEED, 0);

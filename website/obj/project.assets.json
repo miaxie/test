@@ -66,6 +66,18 @@
           "lib/netstandard2.0/Dapper.SimpleCRUD.dll": {}
         }
       },
+      "DapperExtensions/1.6.3": {
+        "type": "package",
+        "dependencies": {
+          "Dapper": "1.12.0"
+        },
+        "compile": {
+          "lib/net45/DapperExtensions.dll": {}
+        },
+        "runtime": {
+          "lib/net45/DapperExtensions.dll": {}
+        }
+      },
       "FluentMigrator.Abstractions/3.2.9": {
         "type": "package",
         "dependencies": {
@@ -2541,6 +2553,7 @@
         "dependencies": {
           "Dapper": "2.0.35",
           "Dapper.SimpleCRUD": "2.2.0.1",
+          "DapperExtensions": "1.6.3",
           "FluentMigrator.Runner.Core": "3.2.9",
           "MySql.Data": "8.0.21",
           "Oracle.ManagedDataAccess": "19.9.0",
@@ -2664,6 +2677,21 @@
         "lib/netstandard2.0/Dapper.SimpleCRUD.dll",
         "lib/netstandard2.0/Dapper.SimpleCRUD.pdb",
         "lib/netstandard2.0/Dapper.SimpleCRUD.xml"
+      ]
+    },
+    "DapperExtensions/1.6.3": {
+      "sha512": "KrmiZVbSu8NcjcdteDfuLKEES8ZA/HOHyDO4n5Gvc2CuSxulaRaEPofr0zCH7LM/yevi2gSnA5GlOGYj8Ayd6w==",
+      "type": "package",
+      "path": "dapperextensions/1.6.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "dapperextensions.1.6.3.nupkg.sha512",
+        "dapperextensions.nuspec",
+        "lib/net40/DapperExtensions.dll",
+        "lib/net40/DapperExtensions.pdb",
+        "lib/net45/DapperExtensions.dll",
+        "lib/net45/DapperExtensions.pdb"
       ]
     },
     "FluentMigrator.Abstractions/3.2.9": {
@@ -8271,23 +8299,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Mia\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\mia_xie\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Mia\\EcPoints\\test\\website\\website.csproj",
+      "projectUniqueName": "D:\\TorchPoints\\test\\website\\website.csproj",
       "projectName": "website",
-      "projectPath": "D:\\Mia\\EcPoints\\test\\website\\website.csproj",
-      "packagesPath": "C:\\Users\\Mia\\.nuget\\packages\\",
-      "outputPath": "D:\\Mia\\EcPoints\\test\\website\\obj\\",
+      "projectPath": "D:\\TorchPoints\\test\\website\\website.csproj",
+      "packagesPath": "C:\\Users\\mia_xie\\.nuget\\packages\\",
+      "outputPath": "D:\\TorchPoints\\test\\website\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Mia\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\mia_xie\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8300,8 +8324,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "D:\\Mia\\EcPoints\\test\\TorchPoints\\TorchPoints.csproj": {
-              "projectPath": "D:\\Mia\\EcPoints\\test\\TorchPoints\\TorchPoints.csproj"
+            "D:\\TorchPoints\\test\\TorchPoints\\TorchPoints.csproj": {
+              "projectPath": "D:\\TorchPoints\\test\\TorchPoints\\TorchPoints.csproj"
             }
           }
         }
@@ -8338,7 +8362,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
       }
     }
   },
@@ -8347,7 +8371,17 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "已使用“.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8”而不是项目目标框架“.NETCoreApp,Version=v3.1”还原包“Oracle.ManagedDataAccess 19.9.0”。此包可能与项目不完全兼容。",
+      "message": "Package 'DapperExtensions 1.6.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "DapperExtensions",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Oracle.ManagedDataAccess 19.9.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
       "libraryId": "Oracle.ManagedDataAccess",
       "targetGraphs": [
         ".NETCoreApp,Version=v3.1"

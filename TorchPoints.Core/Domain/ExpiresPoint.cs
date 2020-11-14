@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Dapper;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace TorchPoints.Core.Domain
 {
+    [Table("ExpiresPoint")]
     public class ExpiresPoint : BaseEntity
     {
         /// <summary>

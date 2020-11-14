@@ -30,12 +30,11 @@ namespace TorchPoints.Controllers
         /// 获取积分历史列表
         /// </summary>
         /// <returns></returns>
-        [HttpGet("{customerid}")]
-        public IActionResult Get(int customerId)
+        [HttpGet("{customerId}")]
+        public ApiResponseModel<dynamic> Get(int customerId,int pageIndex=0,int pageSize=15)
         {
             var list = new List<dynamic>();
-            var totalCount = 0;
-            var historys = _pointService.GetAllPointHistory(out totalCount, pageIndex: 0, pageSize: 15);
+            var historys = _pointService.GetAllPointHistory(customerId:customerId,pageIndex: pageIndex, pageSize: pageSize);
             foreach (var item in historys)
             {
                 var point = new
@@ -49,7 +48,7 @@ namespace TorchPoints.Controllers
                 };
                 list.Add(point);
             }
-            return Ok(list);
+            return new ApiResponseModel<dynamic>(list, historys.TotalCount);
         }
         /// <summary>
         /// 根据id获取积分历史明细
@@ -72,7 +71,7 @@ namespace TorchPoints.Controllers
         /// <param name="history"></param>
         /// <returns></returns>
         [HttpPost]
-        public IActionResult Post([FromBody]PointHistoryModel history)
+        public IActionResult Post([FromBody] PointHistoryModel history)
         {
             var pointHistory = new PointHistory()
             {

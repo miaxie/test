@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Dapper;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace TorchPoints.Core.Domain
 {
+    [Table("ConsumeHistory")]
     public class ConsumeHistory : BaseEntity
     {
         /// <summary>
@@ -22,5 +24,9 @@ namespace TorchPoints.Core.Domain
         /// 消费类型
         /// </summary>
         public int ConsumeTypeId { get; set; }
+        /// <summary>
+        /// 备注
+        /// </summary>
+        public string Remark { get; set; }
     }
 }

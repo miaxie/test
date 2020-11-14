@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Dapper;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace TorchPoints.Core.Domain
 {
+    [Table("ConsumeDetail")]
     public class ConsumeDetail : BaseEntity
     {
         /// <summary>

@@ -1,4 +1,5 @@
 ﻿using Dapper;
+//using DapperExtensions;
 using Microsoft.Extensions.Options;
 using Oracle.ManagedDataAccess.Client;
 using System;
@@ -52,36 +53,19 @@ namespace TorchPoints.Core.DataAccess
         {
             return Connection.Insert(entity);
         }
-
         public virtual void Insert<T>(IEnumerable<T> entities) where T : BaseEntity
         {
             Connection.Insert(entities);
         }
 
-        public virtual void Update<T>(T entity) where T : BaseEntity
+        public virtual int Update<T>(T entity) where T : BaseEntity
         {
-             Connection.Update(entity);
+            return Connection.Update(entity);
         }
 
-        public virtual void Delete<T>(T entity) where T : BaseEntity
+        public virtual int Delete<T>(T entity) where T : BaseEntity
         {
-            Connection.Delete(entity);
-        }
-
-        public T GetByID<T>(int id) where T : class
-        {
-            using (IDbConnection connection = Connection)
-            {
-                return Connection.Get<T>(id);
-            }
-        }
-
-        public async Task<T> GetByIDAsync<T>(int id) where T : class
-        {
-            using (IDbConnection connection = Connection)
-            {
-                return await Connection.GetAsync<T>(id);
-            }
+            return Connection.Delete(entity);
         }
 
         public virtual int Delete<T, TIdType>(IEnumerable<TIdType> ids, string tablename = null, string schema = null, string keyname = null)
@@ -100,7 +84,11 @@ namespace TorchPoints.Core.DataAccess
             return Connection.Execute(sql, new { @ids = ids.ToList() });
         }
 
-      
+        public virtual T Get<T>(dynamic id) where T : BaseEntity
+        {
+            return DapperExtensions.DapperExtensions.Get<T>(Connection, id);
+        }
+
         /// <summary>
         /// 执行SQL返回集合
         /// </summary>
@@ -231,40 +219,83 @@ namespace TorchPoints.Core.DataAccess
             }
         }
 
-        /// <summary>
-        /// dapper通用分页方法
-        /// </summary>
-        /// <typeparam name="T">泛型集合实体类</typeparam>
-        /// <param name="conn">数据库连接池连接对象</param>
-        /// <param name="files">列</param>
-        /// <param name="tableName">表</param>
-        /// <param name="where">条件</param>
-        /// <param name="orderby">排序</param>
-        /// <param name="pageIndex">当前页</param>
-        /// <param name="pageSize">当前页显示条数</param>
-        /// <param name="total">结果集总数</param>
-        /// <returns></returns>
-        public IEnumerable<T> GetPageList<T>(string select, string from, string where, string orderby, int pageIndex, int pageSize, out int total)
+        public IPagedList<T> GetPaged<T>(string queryFields, string fromClause, string whereClause, string orderBy,
+            int pageIndex, int pageSize, IDictionary<string, object> param = null,
+            IDbTransaction tran = null, int? commandTimeout = null, CommandType? commandType = null, bool buffered = true) where T : class, new()
         {
-            int skip = 1;
-            if (pageIndex > 0)
+            if (pageIndex<0)
             {
-                skip = (pageIndex - 1) * pageSize;
+                pageIndex = 0;
             }
             using (IDbConnection conn = Connection)
             {
-                StringBuilder sb = new StringBuilder();
-                sb.AppendFormat("SELECT COUNT(1) {0} {1};", from, where);
-                StringBuilder sql = new StringBuilder();
-                sql.AppendFormat(@"  {0} {1} {2} {3}
-offset {4} rows fetch next {5} rows only", select, from, where, orderby, skip, pageSize);
+                var totalCount = conn.ExecuteScalar<int>(string.Format("select count(1) {0} {1}", fromClause, whereClause), param);
 
-                total = conn.QueryFirstOrDefault<int>(sb.ToString());
+                if (totalCount > 0)
+                {
+                    var sql = string.Format("select {0} {1} {2} {3}", queryFields, fromClause, whereClause, orderBy);
+                    var pagingSql = DapperExtensions.DapperExtensions.SqlDialect.GetPagingSql(sql, pageIndex, pageSize, param);
+                    var result = Connection.Query<T>(pagingSql, param, tran, buffered, commandTimeout, commandType);
 
-                return conn.Query<T>(sql.ToString());
+                    return new PagedList<T>(result, pageIndex, pageSize, totalCount);
+                }
+                return new PagedList<T>(Enumerable.Empty<T>(), pageIndex, pageSize, totalCount);
             }
-        
         }
+
+        public virtual IPagedList<T> GetPaged<T>(string sql, int pageIndex,
+          int pageSize, IDictionary<string, object> param = null, string orderBy = null, IDbTransaction tran = null, int? commandTimeout = null,
+          CommandType? commandType = null, bool buffered = true) where T : class, new()
+        {
+            using (IDbConnection conn = Connection)
+            {
+                var totalCount = conn.ExecuteScalar<int>(string.Format("select count(1) from ({0}) as temp", sql), param);
+                if (totalCount > 0)
+                {
+                    sql = string.Format("{0} {1}", sql, orderBy);
+                    var pagingSql = DapperExtensions.DapperExtensions.SqlDialect.GetPagingSql(sql, pageIndex, pageSize, param);
+                    var result = Connection.Query<T>(pagingSql, param, tran, buffered, commandTimeout, commandType);
+
+                    return new PagedList<T>(result, pageIndex, pageSize, totalCount);
+                }
+                return new PagedList<T>(Enumerable.Empty<T>(), pageIndex, pageSize, totalCount);
+            }
+        }
+
+        #region 事务
+        public virtual IDbTransaction GetTransaction()
+        {
+            using (IDbConnection conn = Connection)
+            {
+                if (conn.State != ConnectionState.Open)
+                    conn.Open();
+
+                return conn.BeginTransaction();
+            }
+        }
+
+        public virtual void TransactionCommit(IDbTransaction tran, bool closeConnection = false)
+        {
+            using (IDbConnection conn = Connection)
+            {
+                tran.Commit();
+
+                if (closeConnection && conn.State == ConnectionState.Open)
+                    tran.Connection.Close();
+            }
+        }
+
+        public virtual void TranRollback(IDbTransaction tran, bool closeConnection = false)
+        {
+            using (IDbConnection conn = Connection)
+            {
+                tran.Rollback();
+
+                if (closeConnection && conn.State == ConnectionState.Open)
+                    tran.Connection.Close();
+            }
+        }
+        #endregion
 
     }
 }
