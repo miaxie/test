@@ -49,6 +49,10 @@
               "target": "Package",
               "version": "[2.2.0.1, )"
             },
+            "DapperExtensions": {
+              "target": "Package",
+              "version": "[1.6.3, )"
+            },
             "FluentMigrator.Runner.Core": {
               "target": "Package",
               "version": "[3.2.9, )"

@@ -42,7 +42,7 @@
                             <li><a href="#">&laquo;</a></li>
                             @{
                                 var pages = Model.TotalCount / 15;
-                                for (int i = 0; i < pages; i++)
+                                for (int i = 0; i <= pages; i++)
                                 {
                                     <li><a href="#"> @(Convert.ToInt32(i)+1)</a></li>
                                 }
@@ -58,16 +58,19 @@
             new Vue({
                 el: '#main',
                 data: {
-                        historys: []
+                    historys: [],
+                    all: "", //总页数
+                    cur: 1,//当前页码
+                    pages: [],
+                    totalPage: 0,//当前条数
                 },
                 mounted() {
                     axios
-                        .get('/Points/GetList?pageIndex=1&pageSize=20')
+                        .get('/Points/GetList?pageIndex=0&pageSize=15')
                         .then(response => {
                             console.log(response);
                             this.historys = response.data;
                         })
-                            //(this.info = response))
                         .catch(function (error) { // 请求失败处理
                             console.log(error);
                         });
@@ -76,43 +79,6 @@
         </script>
 
 
-        @*<script>
-            var demo = new Vue({
-                el: '#main',
-                data: {
-                    searchString: "",
-                    // 数据模型，实际环境你可以根据 Ajax 来获取
-                    articles: [
-                        {
-                            "TypeName": "tile1",
-                            "Id":1,
-                            "Amount": 0,
-                            "GetTime": "2020-11-13",
-                            "ExpiredDate":"2020-11-14"
-                        }, {
-                            "TypeName": "tile1",
-                            "Id": 1,
-                            "Amount": 0,
-                            "GetTime": "2020-11-13",
-                            "ExpiredDate": "2020-11-14"
-                        },
-                        {
-                            "TypeName": "tile1",
-                            "Id": 1,
-                            "Amount": 0,
-                            "GetTime": "2020-11-13",
-                            "ExpiredDate": "2020-11-14"
-                        }
-                    ]
-                },
-                computed: {
-                    filteredHistory: function () {
-                        var articles_array = this.articles;
-                        // 返回过来后的数组
-                        return articles_array;;
-                    }
-                }
-            });
-        </script>*@
+       
     </form>
 </body>

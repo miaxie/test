@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "TEQssXJJX/XuOwja0JcdEe1NLHf55+X+Tg9HA96bibckR4V28PYU365SNiFE4PiogjevTUCSldgvgHz2FmRTYg==",
+  "dgSpecHash": "gQEecXr+AhXcqchPoJnnTZNHLILk6AVGmyLu81frNEyKSDyKCTM90vsZHCPHjjIDSAGLLus1PcxB8G1YnfEM1Q==",
   "success": true,
   "projectFilePath": "D:\\Mia\\EcPoints\\test\\TorchPoints\\TorchPoints.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,7 @@
     "C:\\Users\\Mia\\.nuget\\packages\\bouncycastle.netcore\\1.8.3\\bouncycastle.netcore.1.8.3.nupkg.sha512",
     "C:\\Users\\Mia\\.nuget\\packages\\dapper\\2.0.35\\dapper.2.0.35.nupkg.sha512",
     "C:\\Users\\Mia\\.nuget\\packages\\dapper.simplecrud\\2.2.0.1\\dapper.simplecrud.2.2.0.1.nupkg.sha512",
+    "C:\\Users\\Mia\\.nuget\\packages\\dapperextensions\\1.6.3\\dapperextensions.1.6.3.nupkg.sha512",
     "C:\\Users\\Mia\\.nuget\\packages\\fluentmigrator.abstractions\\3.2.9\\fluentmigrator.abstractions.3.2.9.nupkg.sha512",
     "C:\\Users\\Mia\\.nuget\\packages\\fluentmigrator.runner.core\\3.2.9\\fluentmigrator.runner.core.3.2.9.nupkg.sha512",
     "C:\\Users\\Mia\\.nuget\\packages\\google.protobuf\\3.6.1\\google.protobuf.3.6.1.nupkg.sha512",
@@ -162,6 +163,16 @@
     "C:\\Users\\Mia\\.nuget\\packages\\system.xml.xpath.xmldocument\\4.0.1\\system.xml.xpath.xmldocument.4.0.1.nupkg.sha512"
   ],
   "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "已使用“.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8”而不是项目目标框架“.NETCoreApp,Version=v3.1”还原包“DapperExtensions 1.6.3”。此包可能与项目不完全兼容。",
+      "libraryId": "DapperExtensions",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
     {
       "code": "NU1701",
       "level": "Warning",

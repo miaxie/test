@@ -41,5 +41,14 @@ namespace TorchPoints.Core
             }
 
         }
+
+        /// <summary>
+        /// 当前时间
+        /// </summary>
+        /// <returns></returns>
+        public static DateTime GetDateTimeNow()
+        {
+            return DateTime.Now;
+        }
     }
 }

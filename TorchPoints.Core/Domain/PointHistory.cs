@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Dapper;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using TorchPoints.Core.Domain.Enum;
 
 namespace TorchPoints.Core.Domain
 {
+    [Table("PointHistory")]
     /// <summary>
     /// 积分历史表
     /// </summary>
@@ -15,9 +17,13 @@ namespace TorchPoints.Core.Domain
         /// </summary>
         public PointSourceType TypeId { get; set; }
         /// <summary>
-        /// 积分数量
+        /// 获取的积分数量
         /// </summary>
         public int Amount { get; set; }
+        /// <summary>
+        /// 剩余的积分数量
+        /// </summary>
+        public int RemainAmount { get; set; }
         /// <summary>
         /// 会员id
         /// </summary>

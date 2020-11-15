@@ -23,8 +23,7 @@ namespace website.Controllers
         public IActionResult Index()
         {
             var list = new List<PointHistoryModel>();
-            var totalCount = 0;
-            var historys = _pointService.GetAllPointHistory(out totalCount, pageIndex: 0, pageSize: 15);
+            var historys = _pointService.GetAllPointHistory(pageIndex: 0, pageSize: 15);
             foreach (var item in historys)
             {
                 var point = new PointHistoryModel()
@@ -41,7 +40,7 @@ namespace website.Controllers
             }
             var model = new PointHistoryListModel() { };
             model.Historys = list;
-            model.TotalCount = totalCount;
+            model.TotalCount = historys.TotalCount;
             return View(model);
         }
 
@@ -49,8 +48,7 @@ namespace website.Controllers
         public ActionResult GetList(int pageIndex=0,int pageSize=15)
         {
             var list = new List<PointHistoryModel>();
-            var totalCount = 0;
-            var historys = _pointService.GetAllPointHistory(out totalCount, pageIndex: pageIndex, pageSize: pageSize);
+            var historys = _pointService.GetAllPointHistory( pageIndex: pageIndex, pageSize: pageSize);
             foreach (var item in historys)
             {
                 var point = new PointHistoryModel()
