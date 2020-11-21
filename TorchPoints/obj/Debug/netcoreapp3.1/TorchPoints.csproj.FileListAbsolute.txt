@@ -328,3 +328,4 @@ D:\TorchPoints\test\TorchPoints\bin\Debug\netcoreapp3.1\TorchPoints.xml
 D:\TorchPoints\test\TorchPoints\obj\Debug\netcoreapp3.1\staticwebassets\TorchPoints.StaticWebAssets.Manifest.cache
 D:\TorchPoints\test\TorchPoints\obj\Debug\netcoreapp3.1\staticwebassets\TorchPoints.StaticWebAssets.xml
 D:\TorchPoints\test\TorchPoints\obj\Debug\netcoreapp3.1\TorchPoints.genruntimeconfig.cache
+D:\Mia\EcPoints\test\TorchPoints\bin\Debug\netcoreapp3.1\DapperExtensions.dll

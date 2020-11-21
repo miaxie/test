@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using TorchPoints.Core;
 using TorchPoints.Core.DataAccess;
 using TorchPoints.Core.Domain;
@@ -8,8 +9,8 @@ namespace TorchPoints.Service
 {
     public interface IPointService
     {
-        void InsertCustomerPoint(CustomerPoints customerPoints);
-        void UpdateCustomerPoint(CustomerPoints customerPoints);
+        void InsertCustomerPoint(CustomerPoints customerPoints, IDbTransaction transaction = null);
+        void UpdateCustomerPoint(CustomerPoints customerPoints, IDbTransaction transaction = null);
         void DeleteCustomerPoint(CustomerPoints customerPoints);
         void DeleteCustomerPointsByIds(int[] ids);
         CustomerPoints GetCustomerPointsbyId(int id);

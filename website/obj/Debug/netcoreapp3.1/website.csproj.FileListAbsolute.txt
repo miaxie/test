@@ -309,3 +309,4 @@ D:\TorchPoints\test\website\obj\Debug\netcoreapp3.1\staticwebassets\website.Stat
 D:\TorchPoints\test\website\obj\Debug\netcoreapp3.1\staticwebassets\website.StaticWebAssets.xml
 D:\TorchPoints\test\website\obj\Debug\netcoreapp3.1\website.genruntimeconfig.cache
 D:\TorchPoints\test\website\obj\Debug\netcoreapp3.1\Razor\Views\Points\Index.cshtml.g.cs
+D:\Mia\EcPoints\test\website\bin\Debug\netcoreapp3.1\DapperExtensions.dll

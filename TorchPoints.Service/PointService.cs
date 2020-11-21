@@ -29,15 +29,15 @@ namespace TorchPoints.Service
         #region 会员积分余额操作
 
 
-        public void InsertCustomerPoint(CustomerPoints info)
+        public void InsertCustomerPoint(CustomerPoints info, IDbTransaction transaction = null)
         {
             info.UpdateDate = CommonHelper.GetDateTimeNow();
-            _SqlDB.Insert(info);
+            _SqlDB.Insert(info, transaction);
 
         }
-        public void UpdateCustomerPoint(CustomerPoints info)
+        public void UpdateCustomerPoint(CustomerPoints info, IDbTransaction transaction = null)
         {
-            _SqlDB.Update(info);
+            _SqlDB.Update(info, transaction);
         }
 
         public void DeleteCustomerPoint(CustomerPoints CustomerPoint)
@@ -60,7 +60,7 @@ namespace TorchPoints.Service
         }
         public virtual CustomerPoints GetCustomerPointsbyCustomerId(int customerId)
         {
-            var sql = new StringBuilder(@"select * from [CustomerPoints](nolock)");
+            var sql = new StringBuilder(@"select * from [CustomerPoints] with(nolock)");
 
             if (customerId > 0)
             {
@@ -71,7 +71,7 @@ namespace TorchPoints.Service
         }
         public IEnumerable<CustomerPoints> GetAllCustomerPoints(int customerId = 0)
         {
-            var sql = new StringBuilder(@"select * from [CustomerPoints](nolock)");
+            var sql = new StringBuilder(@"select * from [CustomerPoints] with(nolock)");
 
             if (customerId > 0)
             {
@@ -87,43 +87,49 @@ namespace TorchPoints.Service
         #region 会员积分历史操作
         public virtual PointHistory InsertPointHistory(PointHistory history)
         {
-
-            try
+            var setting = _settingService.GetSettingByName("Point.ExpiredDate");
+            int expiredDays = 30;
+            if (setting != null)
             {
-                var setting = _settingService.GetSettingByName("Point.ExpiredDate");
-                int expiredDays = 30;
-                if (setting != null)
-                {
-                    int.TryParse(setting.AttributeValue, out expiredDays);
-                }
-                history.RemainAmount = history.Amount;
-                history.ExpiredDate = history.GetTime.AddDays(expiredDays);
-                history.Id = _SqlDB.Insert(history);
-                var customerpoint = GetAllCustomerPoints(history.CustomerId);
-                if (customerpoint == null || !customerpoint.Any())
-                {
-                    var point = new CustomerPoints()
-                    {
-                        CustomerId = history.CustomerId,
-                        Amount = history.Amount
-                    };
-                    InsertCustomerPoint(point);
-                }
-                else
-                {
-                    var point = customerpoint.FirstOrDefault();
-                    point.Amount += history.Amount;
-                    UpdateCustomerPoint(point);
-                }
-
-                return history;
+                int.TryParse(setting.AttributeValue, out expiredDays);
             }
-            catch (Exception e)
+            var customerpoint = GetAllCustomerPoints(history.CustomerId);
+            using (IDbConnection myConnection = _SqlDB.Connection)
             {
-
-                return null;
+                myConnection.Open();
+                IDbTransaction tran = myConnection.BeginTransaction();
+                try
+                {
+                    history.RemainAmount = history.Amount;
+                    history.ExpiredDate = history.GetTime.AddDays(expiredDays);
+                    history.Id = myConnection.Insert(history, tran)??0;
+                    if (customerpoint == null || !customerpoint.Any())
+                    {
+                        var point = new CustomerPoints()
+                        {
+                            CustomerId = history.CustomerId,
+                            Amount = history.Amount,
+                            UpdateDate=CommonHelper.GetDateTimeNow()
+                        };
+                        myConnection.Insert(point, tran);
+                    }
+                    else
+                    {
+                        var point = customerpoint.FirstOrDefault();
+                        point.Amount += history.Amount;
+                        myConnection.Update(point, tran);
+                    }
+                    tran.Commit();
+                    return history;
+                }
+                catch (Exception e)
+                {
+                    tran.Rollback();
+                    return null;
+                }
             }
         }
+    
         public virtual void UpdatePointHistory(PointHistory history)
         {
             _SqlDB.Update(history);
@@ -141,7 +147,7 @@ namespace TorchPoints.Service
         {
             var par = new Dictionary<string, object>();
             var queryFeilds = " * ";
-            var from = " from [PointHistory](nolock)";
+            var from = " from [PointHistory] with(nolock)";
             var where = " where 1=1";
             if (customerId > 0)
             {
@@ -166,8 +172,8 @@ namespace TorchPoints.Service
         {
             List<int> statusId = new List<int>() { (int)PointStatus.NoUsed, (int)PointStatus.PartialUsed };
             var par = new Dictionary<string, object>();
-            var queryFeilds = " Id,RemainAmount,CustomerId,UsedDate,StatusId,GetTime,ExpiredDate ";
-            var from = " from [PointHistory](nolock)";
+            var queryFeilds = " Id,Amount,RemainAmount,CustomerId,UsedDate,StatusId,GetTime,ExpiredDate,TypeId ";
+            var from = " from [PointHistory] with(nolock)";
             var where = " where StatusId in @StatusId ";
             par.Add("StatusId", statusId);
             if (customerId > 0)

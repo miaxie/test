@@ -31,10 +31,10 @@ namespace TorchPoints.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("{customerId}")]
-        public ApiResponseModel<dynamic> Get(int customerId,int pageIndex=0,int pageSize=15)
+        public ApiResponseModel<dynamic> Get(int customerId, int pageIndex = 0, int pageSize = 15)
         {
             var list = new List<dynamic>();
-            var historys = _pointService.GetAllPointHistory(customerId:customerId,pageIndex: pageIndex, pageSize: pageSize);
+            var historys = _pointService.GetAllPointHistory(customerId: customerId, pageIndex: pageIndex, pageSize: pageSize);
             foreach (var item in historys)
             {
                 var point = new
@@ -58,12 +58,12 @@ namespace TorchPoints.Controllers
         // GET api/users/5
         [HttpGet]
         [Route("GetById/{id}")]
-        public IActionResult GetPointHistorybyId(int id)
+        public ApiResponseModel<dynamic> GetPointHistorybyId(int id)
         {
             var point = _pointService.GetPointHistorybyId(id);
             if (point == null)
-                return NotFound();
-            return Ok(point);
+                return new ApiResponseModel<dynamic>(Model.StatusCode.HandledFaild);
+            return new ApiResponseModel<dynamic>(point);
         }
         /// <summary>
         /// 新增积分历史
@@ -71,18 +71,29 @@ namespace TorchPoints.Controllers
         /// <param name="history"></param>
         /// <returns></returns>
         [HttpPost]
-        public IActionResult Post([FromBody] PointHistoryModel history)
+        public ApiResponseModel<dynamic> Post([FromBody] PointHistoryModel history)
         {
             var pointHistory = new PointHistory()
             {
                 Amount = history.Amount,
                 TypeId = (PointSourceType)history.TypeId,
                 CustomerId = history.CustomerId,
-                GetTime = history.GetTime,
+                GetTime = CommonHelper.GetDateTimeNow(),
                 StatusId = (int)PointStatus.NoUsed
             };
             var added = _pointService.InsertPointHistory(pointHistory);
-            return Ok(added);
+            if (added == null)
+            {
+                return new ApiResponseModel<dynamic>(Model.StatusCode.HandledFaild, "保存失败，请稍后重试");
+            }
+            var result = new
+            {
+                Amount = added.Amount,
+                TypeName = CommonHelper.GetEnumDescription(added.TypeId),
+                CustomerId = added.CustomerId,
+                GetTime = added.GetTime
+            };
+            return new ApiResponseModel<dynamic>(result);
         }
     }
 }

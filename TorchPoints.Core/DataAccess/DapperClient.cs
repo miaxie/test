@@ -49,18 +49,18 @@ namespace TorchPoints.Core.DataAccess
                 return _connection;
             }
         }
-        public virtual dynamic Insert<T>(T entity) where T : BaseEntity
+        public virtual dynamic Insert<T>(T entity,IDbTransaction transaction = null) where T : BaseEntity
         {
-            return Connection.Insert(entity);
+            return Connection.Insert(entity, transaction);
         }
         public virtual void Insert<T>(IEnumerable<T> entities) where T : BaseEntity
         {
             Connection.Insert(entities);
         }
 
-        public virtual int Update<T>(T entity) where T : BaseEntity
+        public virtual int Update<T>(T entity, IDbTransaction transaction = null) where T : BaseEntity
         {
-            return Connection.Update(entity);
+            return Connection.Update(entity, transaction);
         }
 
         public virtual int Delete<T>(T entity) where T : BaseEntity

@@ -14,6 +14,6 @@ namespace TorchPoints.Core.Domain.Enum
         /// 兑换商品
         /// </summary>
         [Description("兑换商品")]
-        ChangeProduct = 0
+        ChangeProduct = 1
     }
 }

@@ -16,6 +16,12 @@
             <param name="history"></param>
             <returns></returns>
         </member>
+        <member name="M:TorchPoints.Controllers.ConsumeHistoryController.Get(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            获取积分消费历史列表
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:TorchPoints.Controllers.CustomerPointsController">
             <summary>
             积分余额
@@ -51,17 +57,6 @@
             新增积分历史
             </summary>
             <param name="history"></param>
-            <returns></returns>
-        </member>
-        <member name="T:TorchPoints.Controllers.WeatherForecastController">
-            <summary>
-            天气
-            </summary>
-        </member>
-        <member name="M:TorchPoints.Controllers.WeatherForecastController.Get">
-            <summary>
-            获取Json列表
-            </summary>
             <returns></returns>
         </member>
         <member name="T:TorchPoints.Model.ApiResponseModel`1">
@@ -187,11 +182,6 @@
         <member name="P:TorchPoints.Model.PointHistoryModel.CustomerId">
             <summary>
             会员id
-            </summary>
-        </member>
-        <member name="P:TorchPoints.Model.PointHistoryModel.GetTime">
-            <summary>
-            获赠时间
             </summary>
         </member>
     </members>

@@ -38,9 +38,18 @@ namespace TorchPoints.Service
                 return "积分余额不足";
             }
             info.Id = _sqlDB.Insert(info);
+            //更新会员积分余额
+            if (customerPoints != null)
+            {
+                customerPoints.Amount = customerPoints.Amount - info.TotalAmount;
+                customerPoints.UpdateDate = CommonHelper.GetDateTimeNow();
+                _pointService.UpdateCustomerPoint(customerPoints);
+            }
             //获取有效积分历史记录，按时间排序，先消费快过期的积分
             var pointHistorys = _pointService.GetUnUsedPointHistory(customerId:info.CustomerId);
             //如果一条积分记录数量不够，则继续用下一条记录拆分
+            //在明细表中记录拆分详情
+            //更改积分历史表的积分状态
             var totalAmount = info.TotalAmount;
             foreach (var p in pointHistorys)
             {
@@ -80,18 +89,6 @@ namespace TorchPoints.Service
                 InsertConsumeDetail(detail);
                 if (totalAmount <= 0) break;
             }
-            //在明细表中记录拆分详情
-
-            //更改积分历史表的积分状态
-
-            //更新会员积分余额
-           
-            if (customerPoints != null)
-            {
-                customerPoints.Amount = customerPoints.Amount - info.TotalAmount;
-                customerPoints.UpdateDate = CommonHelper.GetDateTimeNow();
-                _pointService.UpdateCustomerPoint(customerPoints);
-            }
             return message;
         }
         /// <summary>
@@ -101,6 +98,30 @@ namespace TorchPoints.Service
         public void InsertConsumeDetail(ConsumeDetail info)
         {
             _sqlDB.Insert(info);
+        }
+
+        /// <summary>
+        /// 获取积分消费历史
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
+        public virtual IPagedList<ConsumeHistory> GetAllConsumeHistorys(int customerId = 0, int pageIndex = 0, int pageSize = int.MaxValue)
+        {
+            var par = new Dictionary<string, object>();
+            var queryFeilds = " * ";
+            var from = " from [ConsumeHistory] with(nolock)";
+            var where = " where 1=1";
+            if (customerId > 0)
+            {
+                where = where + " and customerid=@CustomerId ";
+                par.Add("CustomerId", customerId);
+            }
+
+            var orderby = " order by Id desc";
+            return _sqlDB.GetPaged<ConsumeHistory>(queryFeilds, from, where, orderby, pageIndex, pageSize, par);
+
         }
     }
 }
