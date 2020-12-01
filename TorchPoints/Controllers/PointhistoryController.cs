@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FluentScheduler;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using TorchPoints.Core;
@@ -9,6 +10,7 @@ using TorchPoints.Core.Domain;
 using TorchPoints.Core.Domain.Enum;
 using TorchPoints.Model;
 using TorchPoints.Service;
+using TorchPoints.Service.Task;
 
 namespace TorchPoints.Controllers
 {
@@ -33,6 +35,7 @@ namespace TorchPoints.Controllers
         [HttpGet("{customerId}")]
         public ApiResponseModel<dynamic> Get(int customerId,int pageIndex=0,int pageSize=15)
         {
+           
             var list = new List<dynamic>();
             var historys = _pointService.GetAllPointHistory(customerId:customerId,pageIndex: pageIndex, pageSize: pageSize);
             foreach (var item in historys)

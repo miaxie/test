@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Autofac;
+using FluentScheduler;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -14,6 +15,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using TorchPoints.Core.DataAccess;
 using TorchPoints.Service;
+using TorchPoints.Service.Task;
 
 namespace TorchPoints
 {
@@ -78,11 +80,15 @@ namespace TorchPoints
             {
                 endpoints.MapControllers();
             });
+
+            var Registry = new MyRegistry();
+            JobManager.Initialize(Registry);
         }
 
         public void ConfigureContainer(ContainerBuilder containerBuilder)
         {
             containerBuilder.RegisterModule<ConfigureAutofac>();
+
         }
     }
 }

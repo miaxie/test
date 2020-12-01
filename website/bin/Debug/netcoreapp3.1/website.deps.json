@@ -441,6 +441,17 @@
           "lib/netstandard2.0/FluentMigrator.Runner.Core.dll": {}
         }
       },
+      "FluentScheduler/5.5.1": {
+        "runtime": {
+          "lib/netstandard2.1/FluentScheduler.dll": {
+            "assemblyVersion": "5.5.1.0",
+            "fileVersion": "5.5.1.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.1/FluentScheduler.dll": {}
+        }
+      },
       "Google.Protobuf/3.6.1": {
         "dependencies": {
           "NETStandard.Library": "1.6.1"
@@ -2103,6 +2114,7 @@
       "TorchPoints/1.0.0": {
         "dependencies": {
           "Autofac.Extensions.DependencyInjection": "7.0.2",
+          "FluentScheduler": "5.5.1",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "3.1.4",
           "Swashbuckle.AspNetCore": "5.6.3",
           "TorchPoints.Service": "1.0.0"
@@ -2136,6 +2148,7 @@
         "dependencies": {
           "Dapper": "2.0.35",
           "Dapper.SimpleCRUD": "2.2.0.1",
+          "FluentScheduler": "5.5.1",
           "Swashbuckle.AspNetCore": "5.6.3",
           "TorchPoints.Core": "1.0.0"
         },
@@ -3895,6 +3908,13 @@
       "sha512": "sha512-Sib7bt6pEFfjHGkYVCHSs6CBMXQBEOOhqlhld/oID05q4F3xD0x2aqXw3y9QIAKWahnI4SX+O9Zj6D67ZwWH1g==",
       "path": "fluentmigrator.runner.core/3.2.9",
       "hashPath": "fluentmigrator.runner.core.3.2.9.nupkg.sha512"
+    },
+    "FluentScheduler/5.5.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-OwehD7vZ1CFAboLPrfBTibz/FeKg8DK1h242u0Y050dbfcOlb+d4S/iGBNt/yHaHIhCsmPiQqQjG13e441xWLA==",
+      "path": "fluentscheduler/5.5.1",
+      "hashPath": "fluentscheduler.5.5.1.nupkg.sha512"
     },
     "Google.Protobuf/3.6.1": {
       "type": "package",

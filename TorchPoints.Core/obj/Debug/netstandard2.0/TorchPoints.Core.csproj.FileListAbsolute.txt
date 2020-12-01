@@ -24,4 +24,3 @@ D:\TorchPoints\test\TorchPoints.Core\obj\Debug\netstandard2.0\TorchPoints.Core.d
 D:\TorchPoints\test\TorchPoints.Core\obj\Debug\netstandard2.0\TorchPoints.Core.pdb
 D:\TorchPoints\test\TorchPoints.Core\obj\Debug\netstandard2.0\TorchPoints.Core.csproj.CoreCompileInputs.cache
 D:\TorchPoints\test\TorchPoints.Core\obj\Debug\netstandard2.0\TorchPoints.Core.csprojAssemblyReference.cache
-D:\Mia\EcPoints\test\TorchPoints.Core\obj\Debug\netstandard2.0\TorchPoints.Core.csprojAssemblyReference.cache

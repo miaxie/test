@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "gQEecXr+AhXcqchPoJnnTZNHLILk6AVGmyLu81frNEyKSDyKCTM90vsZHCPHjjIDSAGLLus1PcxB8G1YnfEM1Q==",
+  "dgSpecHash": "OuY4eUqq92exNNgBZZrwQgblRULIu+rqLktfIX88ZgmInaSWgAvBJuIzR3TH3/CoakCPe4f3FOEJ7xchMg0iRg==",
   "success": true,
   "projectFilePath": "D:\\Mia\\EcPoints\\test\\TorchPoints\\TorchPoints.csproj",
   "expectedPackageFiles": [
@@ -12,6 +12,7 @@
     "C:\\Users\\Mia\\.nuget\\packages\\dapperextensions\\1.6.3\\dapperextensions.1.6.3.nupkg.sha512",
     "C:\\Users\\Mia\\.nuget\\packages\\fluentmigrator.abstractions\\3.2.9\\fluentmigrator.abstractions.3.2.9.nupkg.sha512",
     "C:\\Users\\Mia\\.nuget\\packages\\fluentmigrator.runner.core\\3.2.9\\fluentmigrator.runner.core.3.2.9.nupkg.sha512",
+    "C:\\Users\\Mia\\.nuget\\packages\\fluentscheduler\\5.5.1\\fluentscheduler.5.5.1.nupkg.sha512",
     "C:\\Users\\Mia\\.nuget\\packages\\google.protobuf\\3.6.1\\google.protobuf.3.6.1.nupkg.sha512",
     "C:\\Users\\Mia\\.nuget\\packages\\k4os.compression.lz4\\1.1.11\\k4os.compression.lz4.1.1.11.nupkg.sha512",
     "C:\\Users\\Mia\\.nuget\\packages\\k4os.compression.lz4.streams\\1.1.11\\k4os.compression.lz4.streams.1.1.11.nupkg.sha512",
@@ -73,6 +74,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "C:\\Users\\Mia\\.nuget\\packages\\serilog\\2.10.0\\serilog.2.10.0.nupkg.sha512",
     "C:\\Users\\Mia\\.nuget\\packages\\ssh.net\\2016.1.0\\ssh.net.2016.1.0.nupkg.sha512",
     "C:\\Users\\Mia\\.nuget\\packages\\sshnet.security.cryptography\\1.2.0\\sshnet.security.cryptography.1.2.0.nupkg.sha512",
     "C:\\Users\\Mia\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",

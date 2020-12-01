@@ -143,11 +143,19 @@
               "target": "Package",
               "version": "[2.2.0.1, )"
             },
+            "FluentScheduler": {
+              "target": "Package",
+              "version": "[5.5.1, )"
+            },
             "NETStandard.Library": {
               "suppressParent": "All",
               "target": "Package",
               "version": "[2.0.3, )",
               "autoReferenced": true
+            },
+            "Serilog": {
+              "target": "Package",
+              "version": "[2.10.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
