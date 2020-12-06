@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using TorchPoints.Model;
 using TorchPoints.Service;
 
 namespace TorchPoints.Controllers
@@ -27,12 +28,12 @@ namespace TorchPoints.Controllers
         /// <param name="customerid"></param>
         /// <returns></returns>
         [HttpGet("{customerid}")]
-        public IActionResult Get(int customerid)
+        public ApiResponseModel<dynamic> Get(int customerid)
         {
             var points = _pointService.GetAllCustomerPoints(customerid);
             if (points == null)
-                return NotFound();
-            return Ok(points);
+                return new ApiResponseModel<dynamic>(Model.StatusCode.HandledFaild);
+            return new ApiResponseModel<dynamic>(points);
         }
 
     }

@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\TorchPoints.Data",
+    "\\TorchPoints.Service",
+    "\\website"
   ],
   "SelectedNode": "\\DB",
   "PreviewInSolutionExplorer": false

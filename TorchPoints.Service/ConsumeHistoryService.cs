@@ -99,5 +99,29 @@ namespace TorchPoints.Service
         {
             _sqlDB.Insert(info);
         }
+
+        /// <summary>
+        /// 获取积分消费历史
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
+        public virtual IPagedList<ConsumeHistory> GetAllConsumeHistorys(int customerId = 0, int pageIndex = 0, int pageSize = int.MaxValue)
+        {
+            var par = new Dictionary<string, object>();
+            var queryFeilds = " * ";
+            var from = " from [ConsumeHistory] with(nolock)";
+            var where = " where 1=1";
+            if (customerId > 0)
+            {
+                where = where + " and customerid=@CustomerId ";
+                par.Add("CustomerId", customerId);
+            }
+
+            var orderby = " order by Id desc";
+            return _sqlDB.GetPaged<ConsumeHistory>(queryFeilds, from, where, orderby, pageIndex, pageSize, par);
+
+        }
     }
 }

@@ -23,9 +23,5 @@ namespace TorchPoints.Model
         /// 会员id
         /// </summary>
         public int CustomerId { get; set; }
-        /// <summary>
-        /// 获赠时间
-        /// </summary>
-        public DateTime GetTime { get; set; }
     }
 }

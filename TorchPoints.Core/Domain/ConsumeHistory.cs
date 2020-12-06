@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using TorchPoints.Core.Domain.Enum;
 
 namespace TorchPoints.Core.Domain
 {
@@ -23,7 +24,7 @@ namespace TorchPoints.Core.Domain
         /// <summary>
         /// 消费类型
         /// </summary>
-        public int ConsumeTypeId { get; set; }
+        public ConsumeType ConsumeTypeId { get; set; }
         /// <summary>
         /// 备注
         /// </summary>

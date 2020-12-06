@@ -60,7 +60,7 @@ namespace TorchPoints.Service
         }
         public virtual CustomerPoints GetCustomerPointsbyCustomerId(int customerId)
         {
-            var sql = new StringBuilder(@"select * from [CustomerPoints](nolock)");
+            var sql = new StringBuilder(@"select * from [CustomerPoints] with(nolock)");
 
             if (customerId > 0)
             {
@@ -71,7 +71,7 @@ namespace TorchPoints.Service
         }
         public IEnumerable<CustomerPoints> GetAllCustomerPoints(int customerId = 0)
         {
-            var sql = new StringBuilder(@"select * from [CustomerPoints](nolock)");
+            var sql = new StringBuilder(@"select * from [CustomerPoints] with(nolock)");
 
             if (customerId > 0)
             {
@@ -147,7 +147,7 @@ namespace TorchPoints.Service
         {
             var par = new Dictionary<string, object>();
             var queryFeilds = " * ";
-            var from = " from [PointHistory](nolock)";
+            var from = " from [PointHistory] with(nolock)";
             var where = " where 1=1";
             if (customerId > 0)
             {
@@ -172,8 +172,8 @@ namespace TorchPoints.Service
         {
             List<int> statusId = new List<int>() { (int)PointStatus.NoUsed, (int)PointStatus.PartialUsed };
             var par = new Dictionary<string, object>();
-            var queryFeilds = " Id,Amount,RemainAmount,CustomerId,UsedDate,StatusId,GetTime,ExpiredDate ";
-            var from = " from [PointHistory](nolock)";
+            var queryFeilds = " Id,Amount,RemainAmount,CustomerId,UsedDate,StatusId,GetTime,ExpiredDate,TypeId ";
+            var from = " from [PointHistory] with(nolock)";
             var where = " where StatusId in @StatusId ";
             par.Add("StatusId", statusId);
             if (customerId > 0)

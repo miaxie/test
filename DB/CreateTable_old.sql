@@ -279,10 +279,33 @@ ELSE
     PRINT '<<< FAILED CREATING INDEX ExpiresPoint.Ref214 >>>'
 go
 
+/* 
+ * TABLE: ConsumeDetail 
+ */
 
+ALTER TABLE ConsumeDetail ADD CONSTRAINT RefPointHistory81 
+    FOREIGN KEY (PointHistoryId)
+    REFERENCES PointHistory(Id)
+go
+
+ALTER TABLE ConsumeDetail ADD CONSTRAINT RefConsumeHistory101 
+    FOREIGN KEY (ConsumeHistoryId)
+    REFERENCES ConsumeHistory(Id)
+go
+
+
+/* 
+ * TABLE: ExpiresPoint 
+ */
+
+ALTER TABLE ExpiresPoint ADD CONSTRAINT RefPointHistory141 
+    FOREIGN KEY (PointHistoryId)
+    REFERENCES PointHistory(Id)
+go
 
 
 BEGIN TRANSACTION
+ALTER TABLE [dbo].[ConsumeDetail] DROP CONSTRAINT [RefConsumeHistory101]
 
 ALTER TABLE [dbo].[ConsumeHistory] DROP CONSTRAINT [ConsumeHistory_PK]
 
@@ -300,6 +323,11 @@ CREATE CLUSTERED INDEX [ClusteredIndex_on_PS_EcPoints_637410638917457113] ON [db
 
 
 DROP INDEX [ClusteredIndex_on_PS_EcPoints_637410638917457113] ON [dbo].[ConsumeHistory]
+
+
+ALTER TABLE [dbo].[ConsumeDetail]  WITH CHECK ADD  CONSTRAINT [RefConsumeHistory101] FOREIGN KEY([ConsumeHistoryId])
+REFERENCES [dbo].[ConsumeHistory] ([Id])
+ALTER TABLE [dbo].[ConsumeDetail] CHECK CONSTRAINT [RefConsumeHistory101]
 
 
 COMMIT TRANSACTION

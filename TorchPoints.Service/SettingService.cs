@@ -16,7 +16,7 @@ namespace TorchPoints.Service
         }
         public virtual Setting GetSettingByName(string name)
         {
-            var sql = new StringBuilder(@"select * from [Setting](nolock)");
+            var sql = new StringBuilder(@"select * from [Setting] with(nolock)");
 
             if (!string.IsNullOrEmpty(name))
             {

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TorchPoints.Core;
 using TorchPoints.Core.Domain;
+using TorchPoints.Core.Domain.Enum;
 using TorchPoints.Model;
 using TorchPoints.Service;
 
@@ -31,18 +32,42 @@ namespace TorchPoints.Controllers
         /// <param name="history"></param>
         /// <returns></returns>
         [HttpPost]
-        public IActionResult Post([FromBody] ConsumeModel history)
+        public ApiResponseModel<string> Post([FromBody] ConsumeModel history)
         {
             var consumeHistory = new ConsumeHistory()
             {
                 CustomerId = history.CustomerId,
                 TotalAmount = history.Amount,
                 ConsumDate = CommonHelper.GetDateTimeNow(),
-                ConsumeTypeId = history.ConsumeTypeId,
+                ConsumeTypeId = (ConsumeType)history.ConsumeTypeId,
                 Remark = history.Remark
             };
             var added = _consumeHistoryService.InsertConsumeHistory(consumeHistory);
-            return Ok(added);
+            return new ApiResponseModel<string>(added);
+        }
+
+        /// <summary>
+        /// 获取积分消费历史列表
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("{customerId}")]
+        public ApiResponseModel<dynamic> Get(int customerId, int pageIndex = 0, int pageSize = 15)
+        {
+            var list = new List<dynamic>();
+            var historys = _consumeHistoryService.GetAllConsumeHistorys(customerId: customerId, pageIndex: pageIndex, pageSize: pageSize);
+            foreach (var item in historys)
+            {
+                var point = new
+                {
+                    TotalAmount = item.TotalAmount,
+                    ConsumeTypeName = CommonHelper.GetEnumDescription(item.ConsumeTypeId),
+                    CustomerId = item.CustomerId,
+                    ConsumDate = item.ConsumDate,
+                    Remark = item.Remark
+                };
+                list.Add(point);
+            }
+            return new ApiResponseModel<dynamic>(list, historys.TotalCount);
         }
     }
 }

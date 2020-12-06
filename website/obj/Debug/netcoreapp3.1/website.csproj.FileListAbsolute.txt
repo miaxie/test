@@ -311,3 +311,4 @@ D:\TorchPoints\test\website\obj\Debug\netcoreapp3.1\website.genruntimeconfig.cac
 D:\TorchPoints\test\website\obj\Debug\netcoreapp3.1\Razor\Views\Points\Index.cshtml.g.cs
 D:\Mia\EcPoints\test\website\bin\Debug\netcoreapp3.1\DapperExtensions.dll
 D:\Mia\EcPoints\test\website\bin\Debug\netcoreapp3.1\FluentScheduler.dll
+D:\Mia\EcPoints\test\website\bin\Debug\netcoreapp3.1\Serilog.dll
