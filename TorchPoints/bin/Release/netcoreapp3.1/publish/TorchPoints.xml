@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TorchPoints</name>
+    </assembly>
+    <members>
+        <member name="T:TorchPoints.Controllers.WeatherForecastController">
+            <summary>
+            天气
+            </summary>
+        </member>
+        <member name="M:TorchPoints.Controllers.WeatherForecastController.Get">
+            <summary>
+            获取Json列表
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

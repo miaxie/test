@@ -11,7 +11,9 @@
         "dependencies": {
           "Dapper": "2.0.35",
           "Dapper.SimpleCRUD": "2.2.0.1",
+          "FluentScheduler": "5.5.1",
           "NETStandard.Library": "2.0.3",
+          "Serilog": "2.10.0",
           "Swashbuckle.AspNetCore": "5.6.3",
           "TorchPoints.Core": "1.0.0"
         },
@@ -55,6 +57,17 @@
           }
         }
       },
+      "DapperExtensions/1.6.3": {
+        "dependencies": {
+          "Dapper": "2.0.35"
+        },
+        "runtime": {
+          "lib/net45/DapperExtensions.dll": {
+            "assemblyVersion": "1.6.3.0",
+            "fileVersion": "1.6.3.0"
+          }
+        }
+      },
       "FluentMigrator.Abstractions/3.2.9": {
         "dependencies": {
           "System.ComponentModel.Annotations": "4.5.0",
@@ -84,6 +97,14 @@
           "lib/netstandard2.0/FluentMigrator.Runner.Core.dll": {
             "assemblyVersion": "3.2.9.0",
             "fileVersion": "3.2.9.0"
+          }
+        }
+      },
+      "FluentScheduler/5.5.1": {
+        "runtime": {
+          "lib/netstandard2.0/FluentScheduler.dll": {
+            "assemblyVersion": "5.5.1.0",
+            "fileVersion": "5.5.1.0"
           }
         }
       },
@@ -709,6 +730,14 @@
       "runtime.win-arm64.runtime.native.System.Data.SqlClient.sni/4.4.0": {},
       "runtime.win-x64.runtime.native.System.Data.SqlClient.sni/4.4.0": {},
       "runtime.win-x86.runtime.native.System.Data.SqlClient.sni/4.4.0": {},
+      "Serilog/2.10.0": {
+        "runtime": {
+          "lib/netstandard2.0/Serilog.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.10.0.0"
+          }
+        }
+      },
       "SSH.NET/2016.1.0": {
         "dependencies": {
           "Microsoft.CSharp": "4.4.0",
@@ -1589,6 +1618,7 @@
         "dependencies": {
           "Dapper": "2.0.35",
           "Dapper.SimpleCRUD": "2.2.0.1",
+          "DapperExtensions": "1.6.3",
           "FluentMigrator.Runner.Core": "3.2.9",
           "MySql.Data": "8.0.21",
           "Oracle.ManagedDataAccess": "19.9.0",
@@ -1628,6 +1658,13 @@
       "path": "dapper.simplecrud/2.2.0.1",
       "hashPath": "dapper.simplecrud.2.2.0.1.nupkg.sha512"
     },
+    "DapperExtensions/1.6.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-KrmiZVbSu8NcjcdteDfuLKEES8ZA/HOHyDO4n5Gvc2CuSxulaRaEPofr0zCH7LM/yevi2gSnA5GlOGYj8Ayd6w==",
+      "path": "dapperextensions/1.6.3",
+      "hashPath": "dapperextensions.1.6.3.nupkg.sha512"
+    },
     "FluentMigrator.Abstractions/3.2.9": {
       "type": "package",
       "serviceable": true,
@@ -1641,6 +1678,13 @@
       "sha512": "sha512-Sib7bt6pEFfjHGkYVCHSs6CBMXQBEOOhqlhld/oID05q4F3xD0x2aqXw3y9QIAKWahnI4SX+O9Zj6D67ZwWH1g==",
       "path": "fluentmigrator.runner.core/3.2.9",
       "hashPath": "fluentmigrator.runner.core.3.2.9.nupkg.sha512"
+    },
+    "FluentScheduler/5.5.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-OwehD7vZ1CFAboLPrfBTibz/FeKg8DK1h242u0Y050dbfcOlb+d4S/iGBNt/yHaHIhCsmPiQqQjG13e441xWLA==",
+      "path": "fluentscheduler/5.5.1",
+      "hashPath": "fluentscheduler.5.5.1.nupkg.sha512"
     },
     "Google.Protobuf/3.6.1": {
       "type": "package",
@@ -2033,6 +2077,13 @@
       "sha512": "sha512-YhEdSQUsTx+C8m8Bw7ar5/VesXvCFMItyZF7G1AUY+OM0VPZUOeAVpJ4Wl6fydBGUYZxojTDR3I6Bj/+BPkJNA==",
       "path": "runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0",
       "hashPath": "runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512"
+    },
+    "Serilog/2.10.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+QX0hmf37a0/OZLxM3wL7V6/ADvC1XihXN4Kq/p6d8lCPfgkRdiuhbWlMaFjR9Av0dy5F0+MBeDmDdRZN/YwQA==",
+      "path": "serilog/2.10.0",
+      "hashPath": "serilog.2.10.0.nupkg.sha512"
     },
     "SSH.NET/2016.1.0": {
       "type": "package",

@@ -10,7 +10,6 @@ using TorchPoints.Core.Domain;
 using TorchPoints.Core.Domain.Enum;
 using TorchPoints.Model;
 using TorchPoints.Service;
-using TorchPoints.Service.Task;
 
 namespace TorchPoints.Controllers
 {

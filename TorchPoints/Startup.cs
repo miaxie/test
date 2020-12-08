@@ -15,7 +15,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using TorchPoints.Core.DataAccess;
 using TorchPoints.Service;
-using TorchPoints.Service.Task;
+using TorchPoints.Service.TaskSchedule;
+using static TorchPoints.Service.TaskSchedule.MyRegistry;
 
 namespace TorchPoints
 {
@@ -39,6 +40,13 @@ namespace TorchPoints
             });
 
             services.AddControllers();
+
+            services.AddSingleton<IPointService, PointService>();
+            services.AddSingleton<ISetting, SettingService>();
+            services.AddSingleton<IConsumeHistoryService, ConsumeHistoryService>();
+            services.AddHostedService<SchedulerHostedService>();
+            services.AddTransient<MyRegistry>();
+            services.AddTransient<Job>();
             #region swagger
             services.AddSwaggerGen(c =>
             {
@@ -50,8 +58,8 @@ namespace TorchPoints
                 c.IncludeXmlComments(xmlPath, true); //Ìí¼Ó¿ØÖÆÆ÷²ã×¢ÊÍ£¨true±íÊ¾ÏÔÊ¾¿ØÖÆÆ÷×¢ÊÍ£©
             });
             #endregion
-           
 
+         
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -81,13 +89,12 @@ namespace TorchPoints
                 endpoints.MapControllers();
             });
 
-            var Registry = new MyRegistry();
-            JobManager.Initialize(Registry);
+          
         }
 
         public void ConfigureContainer(ContainerBuilder containerBuilder)
         {
-            containerBuilder.RegisterModule<ConfigureAutofac>();
+            //containerBuilder.RegisterModule<ConfigureAutofac>();
 
         }
     }
