@@ -186,6 +186,53 @@ namespace TorchPoints.Service
             return _SqlDB.GetPaged<PointHistory>(queryFeilds, from, where, orderby, pageIndex, pageSize, par);
 
         }
+
+        /// <summary>
+        /// 获取过期积分记录
+        /// </summary>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
+        public virtual IPagedList<ExpiresPoint> GetExpiredPointHistory(
+            int customerId = 0,
+            int pageIndex = 0,
+            int pageSize = int.MaxValue)
+        {
+            var par = new Dictionary<string, object>();
+            var queryFeilds = $"  Id,PointHistoryId,Amount,CustomerId,ExpireDate,CreateDate,RemainAmount ";
+            var from = " from [ExpiresPoint] with(nolock)";
+            var where = " where 1=1";
+            if (customerId > 0)
+            {
+                where = where + " and customerid=@CustomerId ";
+                par.Add("CustomerId", customerId);
+            }
+            var orderby = " order by [ExpireDate] ";
+            return _SqlDB.GetPaged<ExpiresPoint>(queryFeilds, from, where, orderby, pageIndex, pageSize, par);
+
+        }
+        /// <summary>
+        /// 迁移过期积分
+        /// </summary>
+        public virtual void MigratePoints()
+        {
+            var setting = _settingService.GetSettingByName("Point.ClearCount");
+            int clearCount = 1000;
+            if (setting != null)
+            {
+                int.TryParse(setting.AttributeValue, out clearCount);
+            }
+            List<int> statusId = new List<int>() { (int)PointStatus.NoUsed };
+            var par = new Dictionary<string, object>();
+            var sql = new StringBuilder(@" insert into ExpiresPoint ");
+            sql.AppendFormat(@"  select top {0} Id,CustomerId,Amount,ExpiredDate,getdate(),RemainAmount from [PointHistory] with(nolock)
+                 where StatusId in @StatusId and  ExpiredDate < format(getdate(), 'yyyy-MM-dd') ", clearCount);
+            par.Add("StatusId", statusId);
+            _SqlDB.Execute(sql.ToString(), par);
+
+            var deleteSql = @" delete s from PointHistory s  where exists (select 1 from ExpiresPoint ep with(nolock) where  ep.PointHistoryId=s.Id)";
+            _SqlDB.Execute(deleteSql.ToString(), new Dictionary<string, object>());
+        }
         #endregion
     }
 }

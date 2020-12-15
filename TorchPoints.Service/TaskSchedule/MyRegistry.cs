@@ -17,43 +17,26 @@ namespace TorchPoints.Service.TaskSchedule
             _serviceProvider = serviceProvider;
             //Schedule(() =>
             //{
-            //    var point = new PointHistory()
-            //    {
-            //        CustomerId = 10,
-            //        Amount = 1,
-            //        TypeId = Core.Domain.Enum.PointSourceType.Gift,
-            //        RemainAmount = 1,
-            //        GetTime = CommonHelper.GetDateTimeNow(),
-            //        ExpiredDate = CommonHelper.GetDateTimeNow().AddDays(30),
-            //        StatusId = Core.Domain.Enum.PointStatus.NoUsed
-            //    };
-            //    //_pointService.InsertPointHistory(point);
-            //    Console.WriteLine($"当前时间{CommonHelper.GetDateTimeNow()}");
 
             //}).ToRunNow().AndEvery(1).Minutes();//.At(3, 0);
-
-            Schedule<Job>().ToRunNow().AndEvery(1).Minutes();
+            //Schedule<Job>().ToRunEvery(1).Minutes();
+            Schedule<Job>().ToRunEvery(1).Days().At(3, 0);
         }
-
+        /// <summary>
+        /// 清除失效积分
+        /// </summary>
         public class Job : IJob
         {
              private readonly IPointService _pointService;
-            public Job(IPointService pointService) {
+            private readonly ISetting _settingService;
+            public Job(IPointService pointService,
+                ISetting settingService) {
                 _pointService = pointService;
+                _settingService = settingService;
             }
             public void Execute()
             {
-                var point = new PointHistory()
-                {
-                    CustomerId = 10,
-                    Amount = 1,
-                    TypeId = Core.Domain.Enum.PointSourceType.Gift,
-                    RemainAmount = 1,
-                    GetTime = CommonHelper.GetDateTimeNow(),
-                    ExpiredDate = CommonHelper.GetDateTimeNow().AddDays(30),
-                    StatusId = Core.Domain.Enum.PointStatus.NoUsed
-                };
-                _pointService.InsertPointHistory(point);
+                _pointService.MigratePoints();
             }
         }
 

@@ -28,5 +28,9 @@ namespace TorchPoints.Core.Domain
         /// 迁移时间
         /// </summary>
         public DateTime CreateDate { get; set; }
+        /// <summary>
+        /// 剩余积分数量
+        /// </summary>
+        public int RemainAmount { get; set; }
     }
 }

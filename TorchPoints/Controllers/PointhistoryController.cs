@@ -97,5 +97,30 @@ namespace TorchPoints.Controllers
             };
             return new ApiResponseModel<dynamic>(result);
         }
+
+        /// <summary>
+        /// 获取过期积分历史列表
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("GetExpiredPoints/{customerId}")]
+        public ApiResponseModel<dynamic> GetExpiredPoints(int customerId, int pageIndex = 0, int pageSize = 15)
+        {
+
+            var list = new List<dynamic>();
+            var historys = _pointService.GetExpiredPointHistory(customerId: customerId, pageIndex: pageIndex, pageSize: pageSize);
+            foreach (var item in historys)
+            {
+                var point = new
+                {
+                    Amount = item.Amount,
+                    CustomerId = item.CustomerId,
+                    ExpiredDate = item.ExpireDate,
+                    Status = CommonHelper.GetEnumDescription(PointStatus.Expired)
+                };
+                list.Add(point);
+            }
+            return new ApiResponseModel<dynamic>(list, historys.TotalCount);
+        }
     }
 }

@@ -59,6 +59,12 @@
             <param name="history"></param>
             <returns></returns>
         </member>
+        <member name="M:TorchPoints.Controllers.PointhistoryController.GetExpiredPoints(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            获取过期积分历史列表
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:TorchPoints.Model.ApiResponseModel`1">
             <summary>
             api返回模型

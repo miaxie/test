@@ -34,6 +34,21 @@ namespace TorchPoints.Service
         IPagedList<PointHistory> GetUnUsedPointHistory(int customerId = 0,
             int pageIndex = 0,
             int pageSize = int.MaxValue);
+        /// <summary>
+        /// 获取过期积分记录
+        /// </summary>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
+        IPagedList<ExpiresPoint> GetExpiredPointHistory(
+            int customerId = 0,
+            int pageIndex = 0,
+            int pageSize = int.MaxValue);
+
+        /// <summary>
+        /// 迁移过期积分
+        /// </summary>
+        void MigratePoints();
         #endregion
     }
 }

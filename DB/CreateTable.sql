@@ -305,6 +305,10 @@ DROP INDEX [ClusteredIndex_on_PS_EcPoints_637410638917457113] ON [dbo].[ConsumeH
 COMMIT TRANSACTION
 
 
+insert into Setting
+values ('Point.ClearCount','1000'),
+('Point.ExpiredDate','30')
+
 --Çå¿ÕÊý¾Ý
 --DELETE [PointHistory]; 
 --DBCC CHECKIDENT('PointHistory', RESEED, 0);
